@@ -70,6 +70,7 @@ body {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     user-select: none;
+    background-attachment: fixed;
 }
 
 input,
@@ -479,7 +480,10 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all .2s
+    transition: all .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    outline: none;
 }
 
 .topbar-btn svg {
@@ -490,6 +494,11 @@ textarea {
 .topbar-btn:hover {
     color: var(--t1);
     background: var(--green-sub)
+}
+
+.topbar-btn:active {
+    transform: scale(.92);
+    transition: transform .1s;
 }
 
 .topbar-title {
@@ -663,7 +672,10 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all .2s
+    transition: all .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    outline: none;
 }
 
 .back-btn svg {
@@ -673,6 +685,11 @@ textarea {
 
 .back-btn:hover {
     color: var(--t1)
+}
+
+.back-btn:active {
+    transform: scale(.92);
+    transition: transform .1s;
 }
 
 /* ═══ SKELETON ═══ */
@@ -1389,7 +1406,8 @@ textarea {
 }
 
 .feat-card:active {
-    transform: scale(.96)
+    transform: scale(.96);
+    transition: transform .1s;
 }
 
 .feat-card.hide {
@@ -2546,8 +2564,9 @@ textarea {
     -webkit-backdrop-filter: blur(24px);
     border-top: 1px solid rgba(255, 255, 255, .04);
     z-index: 100;
-    padding: 0 20px calc(10px + env(safe-area-inset-bottom, 0));
-    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0));
+    padding: 0 20px calc(20px + env(safe-area-inset-bottom, 0));
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0));
+    box-sizing: content-box;
 }
 
 [data-theme="light"] .navbar {
@@ -2611,7 +2630,8 @@ textarea {
 }
 
 .nav-center:active {
-    transform: translateY(-12px) scale(.9)
+    transform: translateY(-12px) scale(.9);
+    transition: transform .1s;
 }
 
 .nav-center.active {
