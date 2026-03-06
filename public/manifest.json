@@ -1,4 +1,5 @@
 {
+    "id": "mollam-pwa",
     "name": "Mollam — Güvenilir Dijital Fıkıh Rehberi",
     "short_name": "Mollam",
     "description": "Yapay Zeka destekli İslami ilimler asistanı. Muteber kaynaklardan fıkhi sorularınıza cevap verir.",
@@ -25,6 +26,15 @@
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "assets/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Mollam Ana Ekran"
         }
     ]
 }
