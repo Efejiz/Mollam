@@ -155,10 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // ═══ NAVIGATION ═══
     const allPages = document.querySelectorAll('.page'), navBtns = document.querySelectorAll('.nav-btn, .nav-center');
     let currentPage = 'pageChat';
+    const pageHistory = ['pageChat'];
     const featureMap = { prayer: 'pagePrayer', tracker: 'pageTracker', tesbih: 'pageTesbih', dua: 'pageDua', qibla: 'pageQibla', calendar: 'pageCalendar', esma: 'pageEsma', hadith: 'pageHadith' };
     const pageTitles = { pageChat: 'Mollam', pageFeatures: 'Keşfet', pagePrayer: 'Namaz Vakitleri', pageTracker: 'Namaz Takibi', pageTesbih: 'Tesbih', pageDua: 'Dualar', pageQibla: 'Kıble', pageCalendar: 'Takvim', pageEsma: 'Esmaül Hüsna', pageHadith: 'Hadis & Ayet', pageProfile: 'Profil' };
 
-    function goTo(pageId) {
+    function goTo(pageId, pushState = true) {
         if (pageId === currentPage) return;
         allPages.forEach(p => p.classList.remove('active'));
         const el = document.getElementById(pageId); el.classList.add('active');
@@ -170,6 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
         tt.textContent = pageTitles[pageId] || 'Mollam';
         tt.style.fontFamily = pageId === 'pageChat' ? 'var(--fa)' : 'var(--f)';
         currentPage = pageId;
+        if (pushState) {
+            pageHistory.push(pageId);
+            history.pushState({ page: pageId }, '', null);
+        }
         if (pageId === 'pagePrayer') loadPrayerTimes();
         if (pageId === 'pageCalendar') loadCalendar();
         if (pageId === 'pageEsma') loadEsma();
@@ -183,6 +188,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.feat-card').forEach(c => c.addEventListener('click', () => { const p = featureMap[c.dataset.feat]; if (p) goTo(p); }));
     document.querySelectorAll('.back-btn').forEach(b => b.addEventListener('click', () => goTo(b.dataset.back)));
     document.getElementById('navChat').classList.add('active');
+
+    // ═══ BACK BUTTON HANDLING ═══
+    history.replaceState({ page: 'pageChat' }, '', null);
+    window.addEventListener('popstate', (e) => {
+        if (pageHistory.length > 1) {
+            pageHistory.pop();
+            const prevPage = pageHistory[pageHistory.length - 1];
+            goTo(prevPage, false);
+        } else {
+            history.pushState({ page: currentPage }, '', null);
+        }
+    });
 
     // Feature mini info
     function updateFeatMini() {
