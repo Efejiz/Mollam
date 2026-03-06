@@ -670,6 +670,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Render Google Button when modal opens
         if (window.google && google.accounts && google.accounts.id) {
+            if (location.protocol === 'file:') {
+                document.getElementById("googleAuthBtnContainer").innerHTML = '<p class="muted" style="text-align:center; font-size:11px;">(APK sürümünde Google ile giriş desteklenmiyor. Lütfen e-posta kullanın.)</p>';
+                return;
+            }
             google.accounts.id.initialize({
                 client_id: "749876282734-ns7ta6ja20plr02drqhvnerdnp57ujdc.apps.googleusercontent.com",
                 callback: handleGoogleRes
