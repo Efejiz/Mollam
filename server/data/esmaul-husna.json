@@ -1,0 +1,596 @@
+[
+    {
+        "number": 1,
+        "arabic": "الرَّحْمَنُ",
+        "transliteration": "Er-Rahman",
+        "meaning": "Çok merhametli, rahmetiyle muamele eden"
+    },
+    {
+        "number": 2,
+        "arabic": "الرَّحِيمُ",
+        "transliteration": "Er-Rahim",
+        "meaning": "Çok merhametli, rahmetini sürekli gösteren"
+    },
+    {
+        "number": 3,
+        "arabic": "الْمَلِكُ",
+        "transliteration": "El-Melik",
+        "meaning": "Mülkün gerçek sahibi, hükümdar"
+    },
+    {
+        "number": 4,
+        "arabic": "الْقُدُّوسُ",
+        "transliteration": "El-Kuddüs",
+        "meaning": "Her türlü eksiklikten uzak, tertemiz"
+    },
+    {
+        "number": 5,
+        "arabic": "السَّلَامُ",
+        "transliteration": "Es-Selam",
+        "meaning": "Selamet veren, esenlik kaynağı"
+    },
+    {
+        "number": 6,
+        "arabic": "الْمُؤْمِنُ",
+        "transliteration": "El-Mü'min",
+        "meaning": "Güven veren, iman nurunu kalplere yerleştiren"
+    },
+    {
+        "number": 7,
+        "arabic": "الْمُهَيْمِنُ",
+        "transliteration": "El-Müheymin",
+        "meaning": "Her şeyi gözetip koruyan"
+    },
+    {
+        "number": 8,
+        "arabic": "الْعَزِيزُ",
+        "transliteration": "El-Aziz",
+        "meaning": "Yenilmeyen, mutlak galip"
+    },
+    {
+        "number": 9,
+        "arabic": "الْجَبَّارُ",
+        "transliteration": "El-Cebbar",
+        "meaning": "İradesini her durumda yürüten, düzeltici"
+    },
+    {
+        "number": 10,
+        "arabic": "الْمُتَكَبِّرُ",
+        "transliteration": "El-Mütekebbir",
+        "meaning": "Büyüklüğü sınırsız, ulu"
+    },
+    {
+        "number": 11,
+        "arabic": "الْخَالِقُ",
+        "transliteration": "El-Halık",
+        "meaning": "Yoktan var eden, her şeyin yaratıcısı"
+    },
+    {
+        "number": 12,
+        "arabic": "الْبَارِئُ",
+        "transliteration": "El-Bari",
+        "meaning": "Her şeyi birbirinden ayırt edip yaratan"
+    },
+    {
+        "number": 13,
+        "arabic": "الْمُصَوِّرُ",
+        "transliteration": "El-Musavvir",
+        "meaning": "Her varlığa şekil veren"
+    },
+    {
+        "number": 14,
+        "arabic": "الْغَفَّارُ",
+        "transliteration": "El-Gaffar",
+        "meaning": "Günahları çokça bağışlayan"
+    },
+    {
+        "number": 15,
+        "arabic": "الْقَهَّارُ",
+        "transliteration": "El-Kahhar",
+        "meaning": "Her şeye galip gelen, kahreden"
+    },
+    {
+        "number": 16,
+        "arabic": "الْوَهَّابُ",
+        "transliteration": "El-Vehhab",
+        "meaning": "Karşılıksız çokça veren"
+    },
+    {
+        "number": 17,
+        "arabic": "الرَّزَّاقُ",
+        "transliteration": "Er-Rezzak",
+        "meaning": "Bütün canlıların rızkını veren"
+    },
+    {
+        "number": 18,
+        "arabic": "الْفَتَّاحُ",
+        "transliteration": "El-Fettah",
+        "meaning": "Her türlü müşkülü açan, kolaylaştıran"
+    },
+    {
+        "number": 19,
+        "arabic": "الْعَلِيمُ",
+        "transliteration": "El-Alim",
+        "meaning": "Her şeyi en iyi bilen, ilmi sonsuz"
+    },
+    {
+        "number": 20,
+        "arabic": "الْقَابِضُ",
+        "transliteration": "El-Kabıd",
+        "meaning": "Rızkı daraltan, ruhu alan"
+    },
+    {
+        "number": 21,
+        "arabic": "الْبَاسِطُ",
+        "transliteration": "El-Basıt",
+        "meaning": "Rızkı genişleten, ferahlık veren"
+    },
+    {
+        "number": 22,
+        "arabic": "الْخَافِضُ",
+        "transliteration": "El-Hafıd",
+        "meaning": "Dereceleri alçaltan"
+    },
+    {
+        "number": 23,
+        "arabic": "الرَّافِعُ",
+        "transliteration": "Er-Rafi",
+        "meaning": "Dereceleri yükselten"
+    },
+    {
+        "number": 24,
+        "arabic": "الْمُعِزُّ",
+        "transliteration": "El-Muizz",
+        "meaning": "İzzet ve şeref veren"
+    },
+    {
+        "number": 25,
+        "arabic": "الْمُذِلُّ",
+        "transliteration": "El-Müzill",
+        "meaning": "Zillete düşüren, hor kılan"
+    },
+    {
+        "number": 26,
+        "arabic": "السَّمِيعُ",
+        "transliteration": "Es-Semi",
+        "meaning": "Her şeyi işiten"
+    },
+    {
+        "number": 27,
+        "arabic": "الْبَصِيرُ",
+        "transliteration": "El-Basir",
+        "meaning": "Her şeyi gören"
+    },
+    {
+        "number": 28,
+        "arabic": "الْحَكَمُ",
+        "transliteration": "El-Hakem",
+        "meaning": "Hüküm veren, hakkı batıldan ayıran"
+    },
+    {
+        "number": 29,
+        "arabic": "الْعَدْلُ",
+        "transliteration": "El-Adl",
+        "meaning": "Mutlak adil, adaletli"
+    },
+    {
+        "number": 30,
+        "arabic": "اللَّطِيفُ",
+        "transliteration": "El-Latif",
+        "meaning": "Lütuf sahibi, en ince işlerin bile farkında"
+    },
+    {
+        "number": 31,
+        "arabic": "الْخَبِيرُ",
+        "transliteration": "El-Habir",
+        "meaning": "Her şeyden haberdar olan"
+    },
+    {
+        "number": 32,
+        "arabic": "الْحَلِيمُ",
+        "transliteration": "El-Halim",
+        "meaning": "Çok yumuşak davranan, ceza vermekte acele etmeyen"
+    },
+    {
+        "number": 33,
+        "arabic": "الْعَظِيمُ",
+        "transliteration": "El-Azim",
+        "meaning": "Büyüklüğü sınırsız, pek azametli"
+    },
+    {
+        "number": 34,
+        "arabic": "الْغَفُورُ",
+        "transliteration": "El-Gafur",
+        "meaning": "Çok bağışlayan"
+    },
+    {
+        "number": 35,
+        "arabic": "الشَّكُورُ",
+        "transliteration": "Eş-Şekur",
+        "meaning": "Az iyiliğe çok mükâfat veren"
+    },
+    {
+        "number": 36,
+        "arabic": "الْعَلِيُّ",
+        "transliteration": "El-Aliyy",
+        "meaning": "Yücelerin yücesi"
+    },
+    {
+        "number": 37,
+        "arabic": "الْكَبِيرُ",
+        "transliteration": "El-Kebir",
+        "meaning": "Büyüklükte eşi olmayan"
+    },
+    {
+        "number": 38,
+        "arabic": "الْحَفِيظُ",
+        "transliteration": "El-Hafız",
+        "meaning": "Her şeyi koruyan, muhafaza eden"
+    },
+    {
+        "number": 39,
+        "arabic": "الْمُقِيتُ",
+        "transliteration": "El-Mukit",
+        "meaning": "Bedenleri ve ruhları besleyen"
+    },
+    {
+        "number": 40,
+        "arabic": "الْحَسِيبُ",
+        "transliteration": "El-Hasib",
+        "meaning": "Herkese yeten, hesap gören"
+    },
+    {
+        "number": 41,
+        "arabic": "الْجَلِيلُ",
+        "transliteration": "El-Celil",
+        "meaning": "Celal ve ululuk sahibi"
+    },
+    {
+        "number": 42,
+        "arabic": "الْكَرِيمُ",
+        "transliteration": "El-Kerim",
+        "meaning": "Cömertliği sınırsız, kerem sahibi"
+    },
+    {
+        "number": 43,
+        "arabic": "الرَّقِيبُ",
+        "transliteration": "Er-Rakib",
+        "meaning": "Her an gözetleyen, kontrolcü"
+    },
+    {
+        "number": 44,
+        "arabic": "الْمُجِيبُ",
+        "transliteration": "El-Mücib",
+        "meaning": "Dualara icabet eden"
+    },
+    {
+        "number": 45,
+        "arabic": "الْوَاسِعُ",
+        "transliteration": "El-Vasi",
+        "meaning": "Rahmeti ve ilmi geniş olan"
+    },
+    {
+        "number": 46,
+        "arabic": "الْحَكِيمُ",
+        "transliteration": "El-Hakim",
+        "meaning": "Hüküm ve hikmet sahibi"
+    },
+    {
+        "number": 47,
+        "arabic": "الْوَدُودُ",
+        "transliteration": "El-Vedud",
+        "meaning": "Çok seven, sevilmeye layık"
+    },
+    {
+        "number": 48,
+        "arabic": "الْمَجِيدُ",
+        "transliteration": "El-Mecid",
+        "meaning": "Şanı yüce, keremi bol"
+    },
+    {
+        "number": 49,
+        "arabic": "الْبَاعِثُ",
+        "transliteration": "El-Bais",
+        "meaning": "Ölüleri dirilten"
+    },
+    {
+        "number": 50,
+        "arabic": "الشَّهِيدُ",
+        "transliteration": "Eş-Şehid",
+        "meaning": "Her yerde hazır ve nazır olan"
+    },
+    {
+        "number": 51,
+        "arabic": "الْحَقُّ",
+        "transliteration": "El-Hakk",
+        "meaning": "Varlığı kesin, gerçek, hak olan"
+    },
+    {
+        "number": 52,
+        "arabic": "الْوَكِيلُ",
+        "transliteration": "El-Vekil",
+        "meaning": "İşleri en iyi yöneten, güvenilen"
+    },
+    {
+        "number": 53,
+        "arabic": "الْقَوِيُّ",
+        "transliteration": "El-Kaviyy",
+        "meaning": "Gücü sonsuz, kuvvetli"
+    },
+    {
+        "number": 54,
+        "arabic": "الْمَتِينُ",
+        "transliteration": "El-Metin",
+        "meaning": "Çok sağlam, kuvveti şiddetli"
+    },
+    {
+        "number": 55,
+        "arabic": "الْوَلِيُّ",
+        "transliteration": "El-Veliyy",
+        "meaning": "Müminlerin dostu, yardımcısı"
+    },
+    {
+        "number": 56,
+        "arabic": "الْحَمِيدُ",
+        "transliteration": "El-Hamid",
+        "meaning": "Övülmeye en layık olan"
+    },
+    {
+        "number": 57,
+        "arabic": "الْمُحْصِي",
+        "transliteration": "El-Muhsi",
+        "meaning": "Her şeyi sayan, ilmiyle kuşatan"
+    },
+    {
+        "number": 58,
+        "arabic": "الْمُبْدِئُ",
+        "transliteration": "El-Mübdi",
+        "meaning": "Maddesiz ve örneksiz yaratan"
+    },
+    {
+        "number": 59,
+        "arabic": "الْمُعِيدُ",
+        "transliteration": "El-Muid",
+        "meaning": "Ölümden sonra tekrar dirilten"
+    },
+    {
+        "number": 60,
+        "arabic": "الْمُحْيِي",
+        "transliteration": "El-Muhyi",
+        "meaning": "Can veren, hayat bahşeden"
+    },
+    {
+        "number": 61,
+        "arabic": "الْمُمِيتُ",
+        "transliteration": "El-Mümit",
+        "meaning": "Eceli geleni öldüren"
+    },
+    {
+        "number": 62,
+        "arabic": "الْحَيُّ",
+        "transliteration": "El-Hayy",
+        "meaning": "Diri olan, ebedi hayat sahibi"
+    },
+    {
+        "number": 63,
+        "arabic": "الْقَيُّومُ",
+        "transliteration": "El-Kayyum",
+        "meaning": "Her şeyi ayakta tutan"
+    },
+    {
+        "number": 64,
+        "arabic": "الْوَاجِدُ",
+        "transliteration": "El-Vacid",
+        "meaning": "İstediğini bulan, hiçbir şeye muhtaç olmayan"
+    },
+    {
+        "number": 65,
+        "arabic": "الْمَاجِدُ",
+        "transliteration": "El-Macid",
+        "meaning": "Kadri büyük, şerefli"
+    },
+    {
+        "number": 66,
+        "arabic": "الْوَاحِدُ",
+        "transliteration": "El-Vahid",
+        "meaning": "Tek olan, eşi ve benzeri olmayan"
+    },
+    {
+        "number": 67,
+        "arabic": "الْأَحَدُ",
+        "transliteration": "El-Ehad",
+        "meaning": "Bir olan, yegane"
+    },
+    {
+        "number": 68,
+        "arabic": "الصَّمَدُ",
+        "transliteration": "Es-Samed",
+        "meaning": "Hiçbir şeye muhtaç olmayan"
+    },
+    {
+        "number": 69,
+        "arabic": "الْقَادِرُ",
+        "transliteration": "El-Kadir",
+        "meaning": "Her şeye gücü yeten"
+    },
+    {
+        "number": 70,
+        "arabic": "الْمُقْتَدِرُ",
+        "transliteration": "El-Muktedir",
+        "meaning": "Kudret sahiplerinin en üstünü"
+    },
+    {
+        "number": 71,
+        "arabic": "الْمُقَدِّمُ",
+        "transliteration": "El-Mukaddim",
+        "meaning": "İstediğini öne geçiren"
+    },
+    {
+        "number": 72,
+        "arabic": "الْمُؤَخِّرُ",
+        "transliteration": "El-Muahhir",
+        "meaning": "İstediğini geri bırakan"
+    },
+    {
+        "number": 73,
+        "arabic": "الْأَوَّلُ",
+        "transliteration": "El-Evvel",
+        "meaning": "Başlangıcı olmayan, ilk"
+    },
+    {
+        "number": 74,
+        "arabic": "الْآخِرُ",
+        "transliteration": "El-Ahir",
+        "meaning": "Sonu olmayan, son"
+    },
+    {
+        "number": 75,
+        "arabic": "الظَّاهِرُ",
+        "transliteration": "Ez-Zahir",
+        "meaning": "Varlığı aşikâr olan"
+    },
+    {
+        "number": 76,
+        "arabic": "الْبَاطِنُ",
+        "transliteration": "El-Batın",
+        "meaning": "Gizli, aklın idrak edemediği"
+    },
+    {
+        "number": 77,
+        "arabic": "الْوَالِي",
+        "transliteration": "El-Vali",
+        "meaning": "Her şeyi idare eden"
+    },
+    {
+        "number": 78,
+        "arabic": "الْمُتَعَالِي",
+        "transliteration": "El-Müteali",
+        "meaning": "Son derece yüce"
+    },
+    {
+        "number": 79,
+        "arabic": "الْبَرُّ",
+        "transliteration": "El-Berr",
+        "meaning": "İyiliği ve ihsanı bol olan"
+    },
+    {
+        "number": 80,
+        "arabic": "التَّوَّابُ",
+        "transliteration": "Et-Tevvab",
+        "meaning": "Tövbeleri kabul eden"
+    },
+    {
+        "number": 81,
+        "arabic": "الْمُنْتَقِمُ",
+        "transliteration": "El-Müntekim",
+        "meaning": "Suçluları adaletle cezalandıran"
+    },
+    {
+        "number": 82,
+        "arabic": "الْعَفُوُّ",
+        "transliteration": "El-Afüvv",
+        "meaning": "Çok affeden, günahları silip yok eden"
+    },
+    {
+        "number": 83,
+        "arabic": "الرَّؤُوفُ",
+        "transliteration": "Er-Rauf",
+        "meaning": "Çok şefkatli, pek esirgeyen"
+    },
+    {
+        "number": 84,
+        "arabic": "مَالِكُ الْمُلْكِ",
+        "transliteration": "Malikül Mülk",
+        "meaning": "Mülkün ebedi sahibi"
+    },
+    {
+        "number": 85,
+        "arabic": "ذُو الْجَلَالِ وَالْإِكْرَامِ",
+        "transliteration": "Zül Celali vel İkram",
+        "meaning": "Celal ve ikram sahibi"
+    },
+    {
+        "number": 86,
+        "arabic": "الْمُقْسِطُ",
+        "transliteration": "El-Muksit",
+        "meaning": "Adaletle hükmeden"
+    },
+    {
+        "number": 87,
+        "arabic": "الْجَامِعُ",
+        "transliteration": "El-Cami",
+        "meaning": "İstediğini bir araya toplayan"
+    },
+    {
+        "number": 88,
+        "arabic": "الْغَنِيُّ",
+        "transliteration": "El-Ganiyy",
+        "meaning": "Sınırsız zenginlik sahibi, hiçbir şeye muhtaç olmayan"
+    },
+    {
+        "number": 89,
+        "arabic": "الْمُغْنِي",
+        "transliteration": "El-Muğni",
+        "meaning": "İstediğini zenginleştiren"
+    },
+    {
+        "number": 90,
+        "arabic": "الْمَانِعُ",
+        "transliteration": "El-Mani",
+        "meaning": "Dilemediği şeye engel olan"
+    },
+    {
+        "number": 91,
+        "arabic": "الضَّارُّ",
+        "transliteration": "Ed-Darr",
+        "meaning": "Zarar verici şeyleri yaratan"
+    },
+    {
+        "number": 92,
+        "arabic": "النَّافِعُ",
+        "transliteration": "En-Nafi",
+        "meaning": "Faydalı şeyleri yaratan"
+    },
+    {
+        "number": 93,
+        "arabic": "النُّورُ",
+        "transliteration": "En-Nur",
+        "meaning": "Nur olan, her yeri aydınlatan"
+    },
+    {
+        "number": 94,
+        "arabic": "الْهَادِي",
+        "transliteration": "El-Hadi",
+        "meaning": "Hidayet veren, doğru yola ileten"
+    },
+    {
+        "number": 95,
+        "arabic": "الْبَدِيعُ",
+        "transliteration": "El-Bedi",
+        "meaning": "Eşi benzeri olmayan, icad eden"
+    },
+    {
+        "number": 96,
+        "arabic": "الْبَاقِي",
+        "transliteration": "El-Baki",
+        "meaning": "Varlığının sonu olmayan, ebedi"
+    },
+    {
+        "number": 97,
+        "arabic": "الْوَارِثُ",
+        "transliteration": "El-Varis",
+        "meaning": "Her şeyin gerçek varisi"
+    },
+    {
+        "number": 98,
+        "arabic": "الرَّشِيدُ",
+        "transliteration": "Er-Reşid",
+        "meaning": "İrşad eden, doğru yolu gösteren"
+    },
+    {
+        "number": 99,
+        "arabic": "الصَّبُورُ",
+        "transliteration": "Es-Sabur",
+        "meaning": "Çok sabırlı, cezada acele etmeyen"
+    }
+]

@@ -1,0 +1,315 @@
+[
+    {
+        "category": "Sabah & Akşam Zikirleri",
+        "icon": "sunrise",
+        "duas": [
+            {
+                "title": "Sabah Zikri",
+                "arabic": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+                "reading": "Asbahna ve asbahal mülkü lillah, vel hamdü lillah, la ilahe illallahu vahdehu la şerike leh, lehül mülkü ve lehül hamdü ve hüve ala külli şey'in kadir",
+                "meaning": "Biz sabaha ulaştık, mülk de Allah için sabaha ulaştı. Hamd Allah'a mahsustur. Allah'tan başka ilah yoktur, tektir, ortağı yoktur. Mülk O'nundur, hamd O'nadır ve O her şeye kadirdir.",
+                "source": "Müslim, 2723"
+            },
+            {
+                "title": "Akşam Zikri",
+                "arabic": "أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",
+                "reading": "Emseyna ve emsel mülkü lillah, vel hamdü lillah, la ilahe illallahu vahdehu la şerike leh, lehül mülkü ve lehül hamdü ve hüve ala külli şey'in kadir",
+                "meaning": "Biz akşama ulaştık, mülk de Allah için akşama ulaştı. Hamd Allah'a mahsustur. Allah'tan başka ilah yoktur, tektir, ortağı yoktur. Mülk O'nundur, hamd O'nadır ve O her şeye kadirdir.",
+                "source": "Müslim, 2723"
+            },
+            {
+                "title": "Seyyidü'l-İstığfar",
+                "arabic": "اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ خَلَقْتَنِي وَأَنَا عَبْدُكَ وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ",
+                "reading": "Allahümme ente rabbi la ilahe illa ente halakteni ve ene abdüke ve ene ala ahdike ve va'dike mesteta'tü. Euzü bike min şerri ma sana'tü. Ebuu leke bi ni'metike aleyye ve ebuu bi zenbi fağfirli fe innehu la yağfiruz zunube illa ente",
+                "meaning": "Allah'ım! Sen benim Rabbimsin. Senden başka ilah yoktur. Beni Sen yarattın, ben Senin kulunum ve gücüm yettiğince ahdine ve vaadine bağlıyım. Yaptıklarımın şerrinden Sana sığınırım. Bana olan nimetlerini itiraf ederim, günahlarımı da itiraf ederim. Beni bağışla, çünkü günahları ancak Sen bağışlarsın.",
+                "source": "Buhâri, 6306"
+            },
+            {
+                "title": "Uyumadan Önce",
+                "arabic": "بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",
+                "reading": "Bismikellahümme emutü ve ahya",
+                "meaning": "Allah'ım! Senin adınla ölür ve dirilirim.",
+                "source": "Buhâri, 6324"
+            },
+            {
+                "title": "Uykudan Uyanınca",
+                "arabic": "اَلْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ",
+                "reading": "Elhamdulillahillezi ahyana ba'de ma ematena ve ileyhinnuşur",
+                "meaning": "Bizi öldürdükten sonra tekrar dirilten Allah'a hamd olsun. Dönüş O'nadır.",
+                "source": "Buhâri, 6312"
+            }
+        ]
+    },
+    {
+        "category": "Namaz Duaları",
+        "icon": "mosque",
+        "duas": [
+            {
+                "title": "Sübhaneke",
+                "arabic": "سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ وَتَبَارَكَ اسْمُكَ وَتَعَالَى جَدُّكَ وَلَا إِلَهَ غَيْرُكَ",
+                "reading": "Sübhanekellahümme ve bihamdike ve tebarekesmüke ve teala ceddüke ve la ilahe gayrük",
+                "meaning": "Allah'ım! Sen eksik sıfatlardan pak ve uzaksın. Seni daima hamd ile anarım. Senin adın mübarektir. Varlığın her şeyden üstündür. Senden başka ilah yoktur.",
+                "source": "Tirmizi, 242"
+            },
+            {
+                "title": "Ettehiyyatü",
+                "arabic": "اَلتَّحِيَّاتُ لِلَّهِ وَالصَّلَوَاتُ وَالطَّيِّبَاتُ اَلسَّلَامُ عَلَيْكَ أَيُّهَا النَّبِيُّ وَرَحْمَةُ اللَّهِ وَبَرَكَاتُهُ اَلسَّلَامُ عَلَيْنَا وَعَلَى عِبَادِ اللَّهِ الصَّالِحِينَ أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ",
+                "reading": "Ettehiyyatü lillahi ves salavatu vet tayyibat. Esselamu aleyke eyyühen nebiyyü ve rahmetullahi ve berakatüh. Esselamu aleyna ve ala ibadillahis salihin. Eşhedü en la ilahe illallah ve eşhedü enne Muhammeden abdühü ve resulühü",
+                "meaning": "Dil ile, beden ile ve mal ile yapılan bütün ibadetler Allah'a mahsustur. Ey Peygamber! Allah'ın selamı, rahmeti ve bereketleri senin üzerine olsun. Selam bizim ve Allah'ın salih kulları üzerine olsun. Şahitlik ederim ki Allah'tan başka ilah yoktur ve şahitlik ederim ki Muhammed O'nun kulu ve elçisidir.",
+                "source": "Buhâri, 831"
+            },
+            {
+                "title": "Salavât",
+                "arabic": "اَللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",
+                "reading": "Allahümme salli ala Muhammedin ve ala ali Muhammed. Kema salleyte ala İbrahime ve ala ali İbrahim. İnneke hamidün mecid",
+                "meaning": "Allah'ım! Muhammed'e ve Muhammed'in ailesine salât eyle. İbrahim'e ve İbrahim'in ailesine salât ettiğin gibi. Şüphesiz Sen övülmeye layıksın, yücesin.",
+                "source": "Buhâri, 3370"
+            },
+            {
+                "title": "Kunut Duası",
+                "arabic": "اَللَّهُمَّ إِنَّا نَسْتَعِينُكَ وَنَسْتَغْفِرُكَ وَنَسْتَهْدِيكَ وَنُؤْمِنُ بِكَ وَنَتُوبُ إِلَيْكَ وَنَتَوَكَّلُ عَلَيْكَ",
+                "reading": "Allahümme inna nesteınüke ve nestağfiruke ve nestehdike ve nü'minü bike ve netubü ileyke ve netevekkelü aleyke",
+                "meaning": "Allah'ım! Senden yardım isteriz, Senden mağfiret dileriz, Senden hidayet isteriz, Sana iman ederiz, Sana tövbe ederiz ve Sana tevekkül ederiz.",
+                "source": "Beyhaki, 2/210"
+            },
+            {
+                "title": "Rükû Tesbihi",
+                "arabic": "سُبْحَانَ رَبِّيَ الْعَظِيمِ",
+                "reading": "Sübhane rabbiyel azim",
+                "meaning": "Yüce Rabbimi tüm eksikliklerden tenzih ederim.",
+                "source": "Müslim, 772"
+            },
+            {
+                "title": "Secde Tesbihi",
+                "arabic": "سُبْحَانَ رَبِّيَ الْأَعْلَى",
+                "reading": "Sübhane rabbiyel a'la",
+                "meaning": "En yüce Rabbimi tüm eksikliklerden tenzih ederim.",
+                "source": "Müslim, 772"
+            }
+        ]
+    },
+    {
+        "category": "Yemek & Ev",
+        "icon": "home",
+        "duas": [
+            {
+                "title": "Yemekten Önce (Besmele)",
+                "arabic": "بِسْمِ اللَّهِ",
+                "reading": "Bismillah",
+                "meaning": "Allah'ın adıyla başlarım.",
+                "source": "Müslim, 2017"
+            },
+            {
+                "title": "Besmeleyi Unutunca",
+                "arabic": "بِسْمِ اللَّهِ أَوَّلَهُ وَآخِرَهُ",
+                "reading": "Bismillahi evvelehu ve ahirehu",
+                "meaning": "Allah'ın adıyla, başında da sonunda da.",
+                "source": "Tirmizi, 1858"
+            },
+            {
+                "title": "Yemekten Sonra",
+                "arabic": "اَلْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ",
+                "reading": "Elhamdülillahillezi et'ameni haza ve razekanihi min gayri havlin minni ve la kuvve",
+                "meaning": "Benim güç ve kuvvetim olmaksızın beni bununla yediren ve bunu bana rızık olarak veren Allah'a hamd olsun.",
+                "source": "Tirmizi, 3458"
+            },
+            {
+                "title": "Eve Girerken",
+                "arabic": "بِسْمِ اللَّهِ وَلَجْنَا وَبِسْمِ اللَّهِ خَرَجْنَا وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا",
+                "reading": "Bismillahi velecna ve bismillahi haracna ve alallahi rabbina tevekkalna",
+                "meaning": "Allah'ın adıyla girdik, Allah'ın adıyla çıktık ve Rabbimiz Allah'a tevekkül ettik.",
+                "source": "Ebu Davud, 5096"
+            },
+            {
+                "title": "Evden Çıkarken",
+                "arabic": "بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",
+                "reading": "Bismillahi tevekkeltu alallahi ve la havle ve la kuvvete illa billah",
+                "meaning": "Allah'ın adıyla çıkıyorum, Allah'a tevekkül ettim. Güç ve kuvvet ancak Allah'tandır.",
+                "source": "Tirmizi, 3426"
+            }
+        ]
+    },
+    {
+        "category": "Sıkıntı & İstiğfar",
+        "icon": "shield",
+        "duas": [
+            {
+                "title": "Sıkıntı Anında",
+                "arabic": "لَا إِلَهَ إِلَّا اللَّهُ الْعَظِيمُ الْحَلِيمُ لَا إِلَهَ إِلَّا اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ لَا إِلَهَ إِلَّا اللَّهُ رَبُّ السَّمَاوَاتِ وَرَبُّ الْأَرْضِ وَرَبُّ الْعَرْشِ الْكَرِيمِ",
+                "reading": "La ilahe illallahul azimul halim. La ilahe illallahu rabbul arşil azim. La ilahe illallahu rabbüs semavati ve rabbül ardi ve rabbül arşil kerim",
+                "meaning": "Azim ve Halim olan Allah'tan başka ilah yoktur. Büyük Arş'ın Rabbi Allah'tan başka ilah yoktur. Göklerin Rabbi, yerin Rabbi ve yüce Arş'ın Rabbi Allah'tan başka ilah yoktur.",
+                "source": "Buhâri, 6346"
+            },
+            {
+                "title": "Üzüntü ve Keder Duası",
+                "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحُزْنِ وَالْعَجْزِ وَالْكَسَلِ وَالْبُخْلِ وَالْجُبْنِ وَضَلَعِ الدَّيْنِ وَغَلَبَةِ الرِّجَالِ",
+                "reading": "Allahümme inni euzü bike minel hemmi vel hazeni vel aczi vel keseli vel buhli vel cubni ve dalaid deyni ve ğalebetir rical",
+                "meaning": "Allah'ım! Üzüntüden, kederden, acizlikten, tembellikten, cimrilikten, korkaklıktan, borç yükünden ve insanların baskısından Sana sığınırım.",
+                "source": "Buhâri, 6369"
+            },
+            {
+                "title": "İstiğfar (Bağışlanma)",
+                "arabic": "أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَهَ إِلَّا هُوَ الْحَيَّ الْقَيُّومَ وَأَتُوبُ إِلَيْهِ",
+                "reading": "Estağfirullahel azimellezi la ilahe illa hüvel hayyel kayyume ve etubü ileyh",
+                "meaning": "Kendisinden başka ilah olmayan, Hayy ve Kayyum olan yüce Allah'tan mağfiret diler ve O'na tövbe ederim.",
+                "source": "Tirmizi, 3577"
+            },
+            {
+                "title": "Bir Şey Kaybedince",
+                "arabic": "إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ اللَّهُمَّ أْجُرْنِي فِي مُصِيبَتِي وَأَخْلِفْ لِي خَيْرًا مِنْهَا",
+                "reading": "İnna lillahi ve inna ileyhi raciun. Allahümme'curni fi musibeti ve ahlif li hayren minha",
+                "meaning": "Biz Allah'a aidiz ve O'na döneceğiz. Allah'ım, musibetimde bana ecir ver ve bana ondan daha hayırlısını nasip et.",
+                "source": "Müslim, 918"
+            }
+        ]
+    },
+    {
+        "category": "Şifa & Sağlık",
+        "icon": "heart",
+        "duas": [
+            {
+                "title": "Hasta Ziyareti Duası",
+                "arabic": "اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَأْسَ اشْفِ أَنْتَ الشَّافِي لَا شِفَاءَ إِلَّا شِفَاؤُكَ شِفَاءً لَا يُغَادِرُ سَقَمًا",
+                "reading": "Allahümme Rabben nas, ezhebil be'se, işfi enteş şafi, la şifae illa şifauke, şifaen la yuğadiru sekamen",
+                "meaning": "Ey insanların Rabbi olan Allah'ım! Hastalığı gider, şifa ver. Şifa veren yalnız Sensin. Senin şifandan başka şifa yoktur. Öyle bir şifa ver ki hastalık bırakmasın.",
+                "source": "Buhâri, 5675"
+            },
+            {
+                "title": "Ağrı Duası",
+                "arabic": "بِسْمِ اللَّهِ أَعُوذُ بِعِزَّةِ اللَّهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ",
+                "reading": "Bismillahi euzü bi izzetillahi ve kudretihi min şerri ma ecidü ve ühaziru",
+                "meaning": "Allah'ın adıyla, hissettiğim ve çekindiğim şeylerin şerrinden Allah'ın izzetine ve kudretine sığınırım.",
+                "source": "Müslim, 2202"
+            },
+            {
+                "title": "Nazar Duası (Muavvizât)",
+                "arabic": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ وَمِنْ كُلِّ عَيْنٍ لَامَّةٍ",
+                "reading": "Euzü bi kelimatillahit tammeti min külli şeytanin ve hammetin ve min külli aynin lamme",
+                "meaning": "Her şeytandan, zararlı hayvandan ve kem gözden Allah'ın tam kelimelerine sığınırım.",
+                "source": "Buhâri, 3371"
+            }
+        ]
+    },
+    {
+        "category": "Yolculuk & Taşıt",
+        "icon": "travel",
+        "duas": [
+            {
+                "title": "Yolculuk Duası",
+                "arabic": "سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ",
+                "reading": "Sübhanellezi sehhara lena haza ve ma künna lehu mukrinin ve inna ila rabbina le münkalibun",
+                "meaning": "Bunu bizim hizmetimize veren Allah'ın şanı yücedir. Yoksa biz buna güç yetiremezdik. Şüphesiz biz Rabbimize döneceğiz.",
+                "source": "Müslim, 1342"
+            },
+            {
+                "title": "Taşıta Binince",
+                "arabic": "بِسْمِ اللَّهِ وَالْحَمْدُ لِلَّهِ سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ",
+                "reading": "Bismillahi vel hamdü lillah. Sübhanellezi sehhara lena haza ve ma künna lehu mukrinin",
+                "meaning": "Allah'ın adıyla ve Allah'a hamd olsun. Bunu bizim hizmetimize veren Allah'ın şanı yücedir, yoksa biz buna güç yetiremezdik.",
+                "source": "Tirmizi, 3446"
+            },
+            {
+                "title": "Yolculuktan Dönüşte",
+                "arabic": "آيِبُونَ تَائِبُونَ عَابِدُونَ لِرَبِّنَا حَامِدُونَ",
+                "reading": "Ayibune taibune abidune li rabbina hamidun",
+                "meaning": "Dönenler, tövbe edenler, ibadet edenler ve Rabbimize hamd edenler olarak dönüyoruz.",
+                "source": "Müslim, 1342"
+            }
+        ]
+    },
+    {
+        "category": "İlim & Bereket",
+        "icon": "book",
+        "duas": [
+            {
+                "title": "İlim Duası",
+                "arabic": "رَبِّ زِدْنِي عِلْمًا",
+                "reading": "Rabbi zidni ilmen",
+                "meaning": "Rabbim! İlmimi artır.",
+                "source": "Tâhâ, 20:114"
+            },
+            {
+                "title": "Hayırlı Rızık Duası",
+                "arabic": "اللَّهُمَّ إِنِّي أَسْأَلُكَ عِلْمًا نَافِعًا وَرِزْقًا طَيِّبًا وَعَمَلًا مُتَقَبَّلًا",
+                "reading": "Allahümme inni es'elüke ilmen nafian ve rizkan tayyiben ve amelen mütekabbelen",
+                "meaning": "Allah'ım! Senden faydalı ilim, helal rızık ve makbul amel istiyorum.",
+                "source": "İbn Mâce, 925"
+            },
+            {
+                "title": "Bereket Duası",
+                "arabic": "اللَّهُمَّ بَارِكْ لَنَا فِيمَا رَزَقْتَنَا وَقِنَا عَذَابَ النَّارِ",
+                "reading": "Allahümme bârik lena fima razaktena ve kıne azaben nar",
+                "meaning": "Allah'ım! Bize verdiğin rızıkta bereket nasip eyle ve bizi ateş azabından koru.",
+                "source": "İbn Hibban, 1352"
+            },
+            {
+                "title": "Faydasız İlimden",
+                "arabic": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عِلْمٍ لَا يَنْفَعُ وَمِنْ قَلْبٍ لَا يَخْشَعُ وَمِنْ نَفْسٍ لَا تَشْبَعُ وَمِنْ دَعْوَةٍ لَا يُسْتَجَابُ لَهَا",
+                "reading": "Allahümme inni euzü bike min ilmin la yenfeu ve min kalbin la yahşeu ve min nefsin la teşbeu ve min da'vetin la yüstecabü leha",
+                "meaning": "Allah'ım! Fayda vermeyen ilimden, huşu duymayan kalpten, doymayan nefisten ve kabul edilmeyen duadan Sana sığınırım.",
+                "source": "Müslim, 2722"
+            }
+        ]
+    },
+    {
+        "category": "Koruma & Güvence",
+        "icon": "lock",
+        "duas": [
+            {
+                "title": "Ayetel Kürsi",
+                "arabic": "اَللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ",
+                "reading": "Allahu la ilahe illa hüvel hayyul kayyum. La te'huzühu sinetün ve la nevm. Lehu ma fis semavati ve ma fil ard. Men zellezi yeşfeu indehu illa bi iznihi...",
+                "meaning": "Allah, O'ndan başka ilah yoktur. O, diridir, kayyumdur. O'nu ne uyuklama ne uyku tutabilir. Göklerde ve yerde ne varsa hepsi O'nundur. O'nun katında izni olmadan kim şefaat edebilir?",
+                "source": "Bakara 255 / Buhâri, 5010"
+            },
+            {
+                "title": "Sabah-Akşam 3 Kere",
+                "arabic": "بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+                "reading": "Bismillahillezi la yedurru mea ismihi şey'ün fil ardı ve la fis semai ve hüves semiul alim",
+                "meaning": "Yerde ve gökte hiçbir şeyin, ismiyle beraber zarar veremeyeceği Allah'ın adıyla (başlarım). O, hakkıyla işitendir, hakkıyla bilendir.",
+                "source": "Tirmizi, 3388"
+            },
+            {
+                "title": "Allah'a Sığınma",
+                "arabic": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+                "reading": "Euzü bi kelimatillahit tammati min şerri ma halek",
+                "meaning": "Yarattığı şeylerin şerrinden Allah'ın tam kelimelerine sığınırım.",
+                "source": "Müslim, 2708"
+            }
+        ]
+    },
+    {
+        "category": "Rahmet & Mağfiret",
+        "icon": "mercy",
+        "duas": [
+            {
+                "title": "Rabbena Duası",
+                "arabic": "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ",
+                "reading": "Rabbena atina fid dünya haseneten ve fil ahireti haseneten ve kına azaben nar",
+                "meaning": "Rabbimiz! Bize dünyada da iyilik ver, ahirette de iyilik ver ve bizi ateş azabından koru.",
+                "source": "Bakara 201 / Buhâri, 4522"
+            },
+            {
+                "title": "Tövbe Duası",
+                "arabic": "رَبِّ اغْفِرْ لِي وَتُبْ عَلَيَّ إِنَّكَ أَنْتَ التَّوَّابُ الرَّحِيمُ",
+                "reading": "Rabbığfirli ve tüb aleyye inneke entet tevvabur rahim",
+                "meaning": "Rabbim! Beni bağışla ve tövbemi kabul et. Muhakkak Sen tövbeleri çok kabul eden ve çok merhamet edensin.",
+                "source": "Tirmizi, 3434"
+            },
+            {
+                "title": "Cennet Duası",
+                "arabic": "اَللَّهُمَّ إِنِّي أَسْأَلُكَ الْجَنَّةَ وَأَعُوذُ بِكَ مِنَ النَّارِ",
+                "reading": "Allahümme inni es'elükel cennete ve euzü bike minen nar",
+                "meaning": "Allah'ım! Senden cenneti isterim ve cehennemden Sana sığınırım.",
+                "source": "Ebu Davud, 792"
+            },
+            {
+                "title": "Anne-Baba Duası",
+                "arabic": "رَبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا",
+                "reading": "Rabbirhamhüma kema rabbeyani sağira",
+                "meaning": "Rabbim! Onlara (anne-babama) merhamet et, onlar beni küçükken nasıl büyüttülerse.",
+                "source": "İsrâ 17:24"
+            }
+        ]
+    }
+]

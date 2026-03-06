@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mollam - Güvenilir Dijital Fıkıh Rehberiniz">
+    <meta name="theme-color" content="#0B0B0B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+    <title>Mollam - Güvenilir Dijital Fıkıh Rehberiniz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=2">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+    <!-- ═══ SPLASH ═══ -->
+    <div class="splash" id="splash">
+        <div class="splash-inner">
+            <div class="splash-logo">Mollam</div>
+            <div class="splash-sub">Dijital Fıkıh Rehberi</div>
+            <div class="splash-dots"><span></span><span></span><span></span></div>
+        </div>
+    </div>
+
+    <!-- ═══ ONBOARDING ═══ -->
+    <div class="onboarding hidden" id="onboarding">
+        <div class="ob-slides" id="obSlides">
+            <div class="ob-slide active">
+                <div class="ob-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                    </svg></div>
+                <h2>Sual Sorun</h2>
+                <p>Yapay zeka destekli fıkıh asistanınıza merak ettiğiniz soruları sorun. Muteber kaynaklardan cevap
+                    alın.</p>
+            </div>
+            <div class="ob-slide">
+                <div class="ob-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <rect x="3" y="3" width="7" height="7" rx="1" />
+                        <rect x="14" y="3" width="7" height="7" rx="1" />
+                        <rect x="3" y="14" width="7" height="7" rx="1" />
+                        <rect x="14" y="14" width="7" height="7" rx="1" />
+                    </svg></div>
+                <h2>Keşfedin</h2>
+                <p>Namaz vakitleri, dualar, tesbih, kıble pusulası, Esmaül Hüsna ve daha fazlasını keşfedin.</p>
+            </div>
+            <div class="ob-slide">
+                <div class="ob-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg></div>
+                <h2>Takip Edin</h2>
+                <p>Günlük ibadetlerinizi takip edin, hedefler belirleyin, seriyi koruyun.</p>
+            </div>
+        </div>
+        <div class="ob-dots" id="obDots"><span class="active"></span><span></span><span></span></div>
+        <button class="ob-next" id="obNext">Devam</button>
+        <button class="ob-skip" id="obSkip">Atla</button>
+    </div>
+
+    <!-- ═══ TOAST ═══ -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- BG -->
+    <div class="bg-layer">
+        <div class="bg-grad" id="bgGrad"></div>
+    </div>
+    <canvas id="particleCanvas" aria-hidden="true"></canvas>
+
+    <!-- ═══ AUTH MODAL ═══ -->
+    <div class="modal-overlay hidden" id="authOverlay"></div>
+    <div class="modal auth-modal hidden" id="authModal">
+        <div class="modal-header">
+            <h2 id="authTitle">Giriş Yap</h2>
+        </div>
+        <div class="modal-body">
+            <div id="authError" class="auth-error hidden"></div>
+
+            <form id="authForm">
+                <div class="inp-group hidden" id="nameGroup">
+                    <label>Ad Soyad</label>
+                    <input type="text" id="authName" placeholder="Adınız">
+                </div>
+                <div class="inp-group">
+                    <label>E-posta</label>
+                    <input type="email" id="authEmail" placeholder="ornek@mail.com" required>
+                </div>
+                <div class="inp-group">
+                    <label>Şifre</label>
+                    <input type="password" id="authPassword" placeholder="En az 6 karakter" required minlength="6">
+                </div>
+                <button type="submit" class="auth-btn" id="authSubmitBtn">Giriş Yap</button>
+            </form>
+
+            <div class="auth-divider">
+                <span>veya</span>
+            </div>
+
+            <div id="googleAuthBtnContainer"
+                style="display: flex; justify-content: center; margin-top: 15px; margin-bottom: 15px;"></div>
+
+            <p class="auth-switch">Hesabınız yok mu? <a href="#" id="authToggleLink">Kayıt Ol</a></p>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="#" id="guestBtn"
+                    style="color: var(--t3); font-size: 13px; text-decoration: none; border-bottom: 1px dashed var(--t3); padding-bottom: 2px;">Misafir
+                    Olarak Devam Et</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ APP ═══ -->
+    <div class="app" id="app">
+
+        <!-- TOPBAR -->
+        <div class="topbar">
+            <button class="topbar-btn" id="menuBtn" aria-label="Menü"><svg viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </svg></button>
+            <span class="topbar-title" id="topTitle">Mollam</span>
+            <button class="topbar-btn" id="topRightBtn" aria-label="Bilgi" style="visibility:hidden"><svg
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16v-4M12 8h.01" />
+                </svg></button>
+        </div>
+
+        <!-- DRAWER -->
+        <div class="drawer-overlay hidden" id="drawerOverlay"></div>
+        <div class="drawer" id="drawer">
+            <div class="drawer-header">
+                <div class="drawer-logo">Mollam</div><span class="drawer-ver">v2.5</span>
+            </div>
+            <nav class="drawer-nav">
+                <button class="drawer-item" data-action="favorites"><svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg><span>Favorilerim</span></button>
+                <button class="drawer-item" data-action="history"><svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <polyline points="12 6 12 12 16 14" />
+                    </svg><span>Soru Geçmişi</span></button>
+                <button class="drawer-item" data-action="library"><svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
+                        <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
+                    </svg><span>Kitap Kütüphanesi</span></button>
+                <div class="drawer-divider"></div>
+                <button class="drawer-item" data-action="settings"><svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
+                    </svg><span>Ayarlar</span></button>
+                <button class="drawer-item" data-action="about"><svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4M12 8h.01" />
+                    </svg><span>Hakkında</span></button>
+            </nav>
+        </div>
+
+        <!-- ═══ BOTTOM SHEET ═══ -->
+        <div class="bs-overlay hidden" id="bsOverlay"></div>
+        <div class="bottom-sheet" id="bottomSheet">
+            <div class="bs-handle"></div>
+            <div class="bs-content" id="bsContent"></div>
+        </div>
+
+        <!-- ═══ PAGE: CHAT ═══ -->
+        <div class="page active" id="pageChat">
+            <!-- Widget Cards -->
+            <div class="widgets" id="widgets">
+                <div class="widget" id="wPrayer">
+                    <div class="w-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg></div>
+                    <div class="w-info"><span class="w-label" id="wPrayerLabel">Sonraki Namaz</span><span class="w-val"
+                            id="wPrayerVal">--:--</span></div>
+                </div>
+                <div class="widget" id="wTesbih">
+                    <div class="w-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="3" r="2" />
+                            <circle cx="4.5" cy="7" r="2" />
+                            <circle cx="19.5" cy="7" r="2" />
+                            <circle cx="3" cy="14" r="2" />
+                            <circle cx="21" cy="14" r="2" />
+                            <circle cx="7" cy="20" r="2" />
+                            <circle cx="17" cy="20" r="2" />
+                            <circle cx="12" cy="22" r="2" />
+                        </svg></div>
+                    <div class="w-info"><span class="w-label">Tesbih</span><span class="w-val" id="wTesbihVal">0</span>
+                    </div>
+                </div>
+                <div class="widget" id="wGoal">
+                    <div class="w-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg></div>
+                    <div class="w-info"><span class="w-label">Günlük Hedef</span><span class="w-val"
+                            id="wGoalVal">0/3</span></div>
+                </div>
+            </div>
+            <div class="chat-header">
+                <div class="chat-status">
+                    <div class="status-dot"></div><span>Çevrimiçi</span>
+                </div>
+                <div class="chat-actions">
+                    <button class="sm-btn" id="newChatBtn" aria-label="Yeni sohbet"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14" />
+                        </svg></button>
+                    <button class="sm-btn" id="exportBtn" aria-label="Dışa aktar"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg></button>
+                </div>
+            </div>
+            <div class="chat-msgs" id="chatMsgs" role="log" aria-live="polite">
+                <div class="msg ai">
+                    <div class="msg-av"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                            <circle cx="9" cy="9" r="1" fill="currentColor" />
+                            <circle cx="15" cy="9" r="1" fill="currentColor" />
+                        </svg></div>
+                    <div class="msg-bub">
+                        <p>Esselamu Aleyküm! Ben <strong>Mollam</strong>, güvenilir dijital fıkıh asistanınızım.</p>
+                        <p>Sualinizi buyurun.</p>
+                    </div>
+                </div>
+                <div class="suggestions" id="suggestions">
+                    <button class="sug-card" data-q="Abdest nasıl alınır?"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z" />
+                        </svg><span>Abdest nasıl alınır?</span></button>
+                    <button class="sug-card" data-q="Namazda hangi sureler okunur?"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
+                            <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
+                        </svg><span>Namazda sureler</span></button>
+                    <button class="sug-card" data-q="Orucu bozan şeyler nelerdir?"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+                        </svg><span>Orucu bozan şeyler</span></button>
+                    <button class="sug-card" data-q="Zekat kimlere verilir?"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <circle cx="12" cy="8" r="5" />
+                            <path d="M12 6v4M10 8h4" />
+                            <path d="M5 20l2-5h10l2 5" />
+                            <path d="M8 15h8" />
+                        </svg><span>Zekat kimlere verilir?</span></button>
+                </div>
+            </div>
+            <div class="chat-input">
+                <button class="inp-icon" id="voiceBtn" aria-label="Sesli soru"><svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z" />
+                        <path d="M19 10v2a7 7 0 01-14 0v-2" />
+                        <line x1="12" y1="19" x2="12" y2="23" />
+                        <line x1="8" y1="23" x2="16" y2="23" />
+                    </svg></button>
+                <input type="text" id="msgInput" placeholder="Sualinizi yazın..." autocomplete="off" maxlength="1000">
+                <span class="char-ct" id="charCt"></span>
+                <button class="send-btn" id="sendBtn" aria-label="Gönder"><svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                    </svg></button>
+            </div>
+        </div>
+
+        <!-- ═══ PAGE: FEATURES ═══ -->
+        <div class="page" id="pageFeatures">
+            <div class="search-bar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8" />
+                    <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                </svg>
+                <input type="text" id="featSearch" placeholder="Ara...">
+            </div>
+            <div class="feat-grid" id="featGrid">
+                <button class="feat-card" data-feat="prayer">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg></div><span>Namaz Vakitleri</span><small class="feat-mini" id="featPrayerMini">--</small>
+                </button>
+                <button class="feat-card" data-feat="tracker">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg></div><span>Namaz Takibi</span><small class="feat-mini" id="featTrackerMini">--</small>
+                </button>
+                <button class="feat-card" data-feat="tesbih">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <circle cx="12" cy="3" r="2" />
+                            <circle cx="5" cy="6" r="2" />
+                            <circle cx="19" cy="6" r="2" />
+                            <circle cx="3" cy="13" r="2" />
+                            <circle cx="21" cy="13" r="2" />
+                            <circle cx="6" cy="19" r="2" />
+                            <circle cx="18" cy="19" r="2" />
+                            <circle cx="12" cy="22" r="2" />
+                        </svg></div><span>Tesbih</span><small class="feat-mini" id="featTesbihMini">--</small>
+                </button>
+                <button class="feat-card" data-feat="dua">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M7 20c0-4 2-6 5-10" />
+                            <path d="M17 20c0-4-2-6-5-10" />
+                            <path d="M12 10V6" />
+                            <path d="M9 4a3 3 0 016 0" />
+                            <path d="M5 22h14" />
+                            <path d="M7 20c-2-1-4-3-4-6" />
+                            <path d="M17 20c2-1 4-3 4-6" />
+                        </svg></div><span>Dualar</span><small class="feat-mini" id="featDuaMini">38 dua</small>
+                </button>
+                <button class="feat-card" data-feat="qibla">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <polygon points="12 2 15 10 12 8 9 10" fill="currentColor" stroke="none" />
+                            <polygon points="12 22 9 14 12 16 15 14" />
+                            <line x1="2" y1="12" x2="5" y2="12" />
+                            <line x1="19" y1="12" x2="22" y2="12" />
+                        </svg></div><span>Kıble Pusulası</span><small class="feat-mini">Yön bul</small>
+                </button>
+                <button class="feat-card" data-feat="calendar">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                            <path d="M16 2v4M8 2v4M3 10h18" />
+                            <circle cx="12" cy="15" r="1.5" fill="currentColor" />
+                        </svg></div><span>Takvim</span><small class="feat-mini" id="featCalMini">--</small>
+                </button>
+                <button class="feat-card" data-feat="esma">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <text x="12" y="16" text-anchor="middle" fill="currentColor" stroke="none" font-size="10"
+                                font-weight="bold">99</text>
+                        </svg></div><span>Esmaül Hüsna</span><small class="feat-mini">99 isim</small>
+                </button>
+                <button class="feat-card" data-feat="hadith">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
+                            <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
+                        </svg></div><span>Hadis & Ayet</span><small class="feat-mini">Günlük</small>
+                </button>
+            </div>
+        </div>
+
+        <!-- ═══ SUB: PRAYER ═══ -->
+        <div class="page sub" id="pagePrayer">
+            <div class="sub-header"><button class="back-btn" data-back="pageFeatures"><svg viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg></button>
+                <h2>Namaz Vakitleri</h2>
+            </div>
+            <div class="page-scroll" data-pull="prayer">
+                <div class="pull-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="23 4 23 10 17 10" />
+                        <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10" />
+                    </svg></div>
+                <div class="card">
+                    <div class="prayer-loc" id="prayerLoc">
+                        <div class="skel skel-sm"></div>
+                    </div>
+                    <div class="prayer-list" id="prayerList">
+                        <div class="p-row" data-name="Fajr">
+                            <div class="p-dot"></div><span class="p-name">İmsak</span><span class="p-time"
+                                id="timeFajr"><span class="skel skel-time"></span></span>
+                        </div>
+                        <div class="p-row" data-name="Sunrise">
+                            <div class="p-dot"></div><span class="p-name">Güneş</span><span class="p-time"
+                                id="timeSunrise"><span class="skel skel-time"></span></span>
+                        </div>
+                        <div class="p-row" data-name="Dhuhr">
+                            <div class="p-dot"></div><span class="p-name">Öğle</span><span class="p-time"
+                                id="timeDhuhr"><span class="skel skel-time"></span></span>
+                        </div>
+                        <div class="p-row" data-name="Asr">
+                            <div class="p-dot"></div><span class="p-name">İkindi</span><span class="p-time"
+                                id="timeAsr"><span class="skel skel-time"></span></span>
+                        </div>
+                        <div class="p-row" data-name="Maghrib">
+                            <div class="p-dot"></div><span class="p-name">Akşam</span><span class="p-time"
+                                id="timeMaghrib"><span class="skel skel-time"></span></span>
+                        </div>
+                        <div class="p-row" data-name="Isha">
+                            <div class="p-dot"></div><span class="p-name">Yatsı</span><span class="p-time"
+                                id="timeIsha"><span class="skel skel-time"></span></span>
+                        </div>
+                    </div>
+                    <div class="next-bar"><span id="nextLabel">Sonraki namaza</span><span class="next-time"
+                            id="nextTime">--:--</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ SUB: TRACKER ═══ -->
+        <div class="page sub" id="pageTracker">
+            <div class="sub-header"><button class="back-btn" data-back="pageFeatures"><svg viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg></button>
+                <h2>Namaz Takibi</h2>
+            </div>
+            <div class="page-scroll">
+                <div class="card tracker-card">
+                    <div class="streak-row"><span>Seri</span><span class="streak-val" id="streak">0</span></div>
+                    <div class="tracker-grid" id="trackerGrid">
+                        <label class="tr-item"><input type="checkbox" data-prayer="fajr"><span class="tr-check"><svg
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span><span class="tr-name">İmsak</span></label>
+                        <label class="tr-item"><input type="checkbox" data-prayer="dhuhr"><span class="tr-check"><svg
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span><span class="tr-name">Öğle</span></label>
+                        <label class="tr-item"><input type="checkbox" data-prayer="asr"><span class="tr-check"><svg
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span><span class="tr-name">İkindi</span></label>
+                        <label class="tr-item"><input type="checkbox" data-prayer="maghrib"><span class="tr-check"><svg
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span><span class="tr-name">Akşam</span></label>
+                        <label class="tr-item"><input type="checkbox" data-prayer="isha"><span class="tr-check"><svg
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span><span class="tr-name">Yatsı</span></label>
+                    </div>
+                </div>
+                <!-- Weekly Calendar -->
+                <div class="card">
+                    <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="card-icon">
+                            <rect x="3" y="4" width="18" height="18" rx="2" />
+                            <path d="M16 2v4M8 2v4M3 10h18" />
+                        </svg>Haftalık Görünüm</h3>
+                    <div class="week-grid" id="weekGrid"></div>
+                </div>
+                <!-- Daily Goals -->
+                <div class="card">
+                    <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="card-icon">
+                            <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>Günlük Hedefler</h3>
+                    <div class="goals" id="goals">
+                        <label class="goal-item"><input type="checkbox" data-goal="prayer"><span class="goal-check"><svg
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span><span>5 vakit namaz kıl</span></label>
+                        <label class="goal-item"><input type="checkbox" data-goal="tesbih"><span class="goal-check"><svg
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span><span>33 tesbih çek</span></label>
+                        <label class="goal-item"><input type="checkbox" data-goal="dua"><span class="goal-check"><svg
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg></span><span>1 dua oku</span></label>
+                    </div>
+                    <div class="goal-bar">
+                        <div class="goal-fill" id="goalFill"></div>
+                    </div>
+                    <div class="goal-text" id="goalText">0 / 3 hedef tamamlandı</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ SUB: TESBIH ═══ -->
+        <div class="page sub" id="pageTesbih">
+            <div class="sub-header"><button class="back-btn" data-back="pageFeatures"><svg viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg></button>
+                <h2>Tesbih</h2>
+            </div>
+            <div class="page-scroll tesbih-scroll">
+                <div class="zikir-name" id="zikirName">Sübhanallah</div>
+                <div class="ring-wrap"><svg class="ring-svg" viewBox="0 0 200 200">
+                        <circle class="ring-bg" cx="100" cy="100" r="90" />
+                        <circle class="ring-bar" cx="100" cy="100" r="90" id="ringBar" />
+                    </svg>
+                    <div class="ring-inner"><span class="ring-count" id="tCount">0</span><span class="ring-of">/ <span
+                                id="tTarget">33</span></span></div>
+                </div>
+                <div class="t-total">Toplam: <strong id="tTotal">0</strong></div>
+                <div class="t-modes"><button class="t-mode active" data-target="33">33</button><button class="t-mode"
+                        data-target="99">99</button><button class="t-mode" data-target="100">100</button><button
+                        class="t-mode" data-target="0">&infin;</button></div>
+                <div class="t-presets"><button class="t-pre active" data-z="Sübhanallah">Sübhanallah</button><button
+                        class="t-pre" data-z="Elhamdülillah">Elhamdülillah</button><button class="t-pre"
+                        data-z="Allahuekber">Allahuekber</button><button class="t-pre"
+                        data-z="Estağfirullah">Estağfirullah</button><button class="t-pre" data-z="La ilahe illallah">La
+                        ilahe illallah</button></div>
+                <button class="tap-btn" id="tapBtn">Dokun</button>
+                <button class="reset-btn" id="resetBtn">Sıfırla</button>
+            </div>
+        </div>
+
+        <!-- ═══ SUB: DUA ═══ -->
+        <div class="page sub" id="pageDua">
+            <div class="sub-header"><button class="back-btn" data-back="pageFeatures"><svg viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg></button>
+                <h2>Dualar</h2>
+            </div>
+            <div class="page-scroll">
+                <div class="dua-list" id="duaList">
+                    <div class="skel skel-card"></div>
+                    <div class="skel skel-card"></div>
+                    <div class="skel skel-card"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ SUB: QIBLA ═══ -->
+        <div class="page sub" id="pageQibla">
+            <div class="sub-header"><button class="back-btn" data-back="pageFeatures"><svg viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg></button>
+                <h2>Kıble Pusulası</h2>
+            </div>
+            <div class="page-scroll"
+                style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:40px">
+                <div class="compass" id="compass">
+                    <div class="compass-ring"><span class="c-dir n">K</span><span class="c-dir e">D</span><span
+                            class="c-dir s">G</span><span class="c-dir w">B</span></div>
+                    <div class="compass-needle" id="needle"></div>
+                    <div class="kaaba" id="kaaba"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                            <path d="M12 2L4 7v10l8 5 8-5V7z" />
+                            <path d="M4 7l8 5 8-5" fill="none" stroke="var(--bg)" stroke-width="0.5" />
+                            <path d="M12 12v10" fill="none" stroke="var(--bg)" stroke-width="0.5" />
+                        </svg></div>
+                </div>
+                <p class="compass-info" id="compassInfo">Yön bulmak için cihazınızı düz tutun</p>
+            </div>
+        </div>
+
+        <!-- ═══ SUB: CALENDAR ═══ -->
+        <div class="page sub" id="pageCalendar">
+            <div class="sub-header"><button class="back-btn" data-back="pageFeatures"><svg viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg></button>
+                <h2>Takvim</h2>
+            </div>
+            <div class="page-scroll">
+                <div class="card cal-today">
+                    <div class="cal-greg" id="calGreg">--</div>
+                    <div class="cal-hijri" id="calHijri">--</div>
+                    <div class="cal-day" id="calDay">--</div>
+                </div>
+                <div class="card ayet-card">
+                    <div class="ayet-head"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z" />
+                            <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
+                        </svg>
+                        <h3>Günün Ayeti</h3>
+                    </div>
+                    <p class="ayet-txt" id="ayetTxt"><span class="skel skel-text"></span></p><span class="ayet-src"
+                        id="ayetSrc"></span>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Yaklaşan Önemli Günler</h3>
+                    <div id="datesList"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ SUB: ESMA ═══ -->
+        <div class="page sub" id="pageEsma">
+            <div class="sub-header"><button class="back-btn" data-back="pageFeatures"><svg viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg></button>
+                <h2>Esmaül Hüsna</h2>
+            </div>
+            <div class="page-scroll">
+                <div class="esma-grid" id="esmaGrid"></div>
+            </div>
+        </div>
+
+        <!-- ═══ SUB: HADITH ═══ -->
+        <div class="page sub" id="pageHadith">
+            <div class="sub-header"><button class="back-btn" data-back="pageFeatures"><svg viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg></button>
+                <h2>Hadis & Ayet</h2>
+            </div>
+            <div class="page-scroll" data-pull="hadith">
+                <div class="pull-indicator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="23 4 23 10 17 10" />
+                        <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10" />
+                    </svg></div>
+                <div class="card hadith-card">
+                    <h3 class="card-title">Günün Hadisi</h3>
+                    <p class="hadith-txt" id="hadithTxt"><span class="skel skel-text"></span></p><span
+                        class="hadith-src" id="hadithSrc"></span>
+                </div>
+                <div class="card ayet-card">
+                    <h3 class="card-title">Günün Ayeti</h3>
+                    <p class="ayet-txt" id="hadithAyetTxt"><span class="skel skel-text"></span></p><span
+                        class="ayet-src" id="hadithAyetSrc"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═══ PAGE: PROFILE ═══ -->
+        <div class="page" id="pageProfile">
+            <div class="page-scroll">
+                <div class="profile-header">
+                    <div class="profile-avatar" id="profileAvatarView"><svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                            <circle cx="12" cy="7" r="4" />
+                        </svg></div>
+                    <h2 id="profileNameView">Misafir Kullanıcı</h2>
+                    <p class="muted" id="profileEmailView" style="margin-top: 4px; font-size: 12px;"></p>
+                </div>
+
+                <div class="card auth-card" id="profileAuthCard">
+                    <p style="font-size: 13px; color: var(--t2); margin-bottom: 12px;">Verilerinizi yedeklemek ve
+                        cihazlar arası senkronize etmek için giriş yapın.</p>
+                    <button class="action-btn" id="openLoginBtn"
+                        style="background: var(--green-l); color: #fff; width: 100%;">Giriş Yap / Kayıt Ol</button>
+                </div>
+
+                <div class="card auth-card hidden" id="profileLogoutCard">
+                    <button class="action-btn danger" id="logoutBtn" style="width: 100%;">Çıkış Yap</button>
+                </div>
+                <div class="card">
+                    <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="card-icon">
+                            <circle cx="12" cy="12" r="5" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                        </svg>Tema</h3>
+                    <div class="toggle-row"><span>Koyu Tema</span><label class="toggle"><input type="checkbox"
+                                id="themeToggle" checked><span class="toggle-sl"></span></label></div>
+                    <div class="toggle-row"><span>Sistem Temasını Kullan</span><label class="toggle"><input
+                                type="checkbox" id="autoThemeToggle"><span class="toggle-sl"></span></label></div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="card-icon">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                            <path d="M19.07 4.93a10 10 0 010 14.14" />
+                        </svg>Ses</h3>
+                    <div class="toggle-row"><span>Tesbih Sesi</span><label class="toggle"><input type="checkbox"
+                                id="soundToggle"><span class="toggle-sl"></span></label></div>
+                    <div class="toggle-row"><span>Bildirimler</span><label class="toggle"><input type="checkbox"
+                                id="notifToggle"><span class="toggle-sl"></span></label></div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="card-icon">
+                            <path d="M4 7V4h16v3" />
+                            <path d="M9 20h6" />
+                            <path d="M12 4v16" />
+                        </svg>Yazı Boyutu</h3>
+                    <div class="font-size-row"><span>Arapça Metin</span>
+                        <div class="font-btns"><button class="font-btn" data-size="-">A-</button><span
+                                id="fontSizeVal">18px</span><button class="font-btn" data-size="+">A+</button></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="card-icon">
+                            <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+                        </svg>Mezhep</h3>
+                    <div class="madhab-opts"><label class="radio-opt"><input type="radio" name="madhab" value="Hanefi"
+                                checked><span>Hanefi</span></label><label class="radio-opt"><input type="radio"
+                                name="madhab" value="Şafii"><span>Şafii</span></label><label class="radio-opt"><input
+                                type="radio" name="madhab" value="Maliki"><span>Maliki</span></label><label
+                            class="radio-opt"><input type="radio" name="madhab"
+                                value="Hanbeli"><span>Hanbeli</span></label></div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="card-icon">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>Favoriler</h3>
+                    <div id="favList">
+                        <p class="muted">Henüz favori eklenmedi.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="card-icon">
+                            <circle cx="12" cy="12" r="10" />
+                            <polyline points="12 6 12 12 16 14" />
+                        </svg>Geçmiş</h3>
+                    <div id="histList">
+                        <p class="muted">Henüz soru sorulmadı.</p>
+                    </div><button class="action-btn danger" id="clearHistBtn">Geçmişi Temizle</button>
+                </div>
+                <div class="about-block">
+                    <div class="about-logo">Mollam</div>
+                    <p>Yapay Zeka Destekli Fıkıh Asistanı</p><span>v2.5.0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- NAVBAR -->
+        <nav class="navbar" id="navbar">
+            <button class="nav-btn" id="navFeatures" data-page="pageFeatures" aria-label="Keşfet"><svg
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <rect x="3" y="3" width="7" height="7" rx="1" />
+                    <rect x="14" y="3" width="7" height="7" rx="1" />
+                    <rect x="3" y="14" width="7" height="7" rx="1" />
+                    <rect x="14" y="14" width="7" height="7" rx="1" />
+                </svg><span>Keşfet</span></button>
+            <button class="nav-center" id="navChat" data-page="pageChat" aria-label="Sual Sor"><svg viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
+                </svg></button>
+            <button class="nav-btn" id="navProfile" data-page="pageProfile" aria-label="Profil"><svg viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                </svg><span>Profil</span></button>
+        </nav>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
