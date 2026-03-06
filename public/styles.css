@@ -4,11 +4,11 @@
    ============================================ */
 :root,
 [data-theme="dark"] {
-    --bg: #0B0B0B;
+    --bg: #0a0a0a;
     --bg2: #111;
-    --surf: #181818;
-    --glass: rgba(20, 20, 20, .85);
-    --glass-b: rgba(255, 255, 255, .06);
+    --surf: #151515;
+    --glass: rgba(22, 22, 22, .92);
+    --glass-b: rgba(255, 255, 255, .08);
     --green: #006400;
     --green-l: #00a000;
     --green-glow: rgba(0, 100, 0, .4);
@@ -63,6 +63,7 @@ body {
     color: var(--t1);
     overflow-x: hidden;
     min-height: 100vh;
+    min-height: 100dvh;
     -webkit-font-smoothing: antialiased;
     transition: background .3s, color .3s;
     overscroll-behavior-y: none;
@@ -71,6 +72,7 @@ body {
     -webkit-user-select: none;
     user-select: none;
     background-attachment: fixed;
+    padding-top: env(safe-area-inset-top, 0px);
 }
 
 input,
@@ -96,6 +98,13 @@ textarea {
 
 .hidden {
     display: none !important
+}
+
+@keyframes rippleAnim {
+    to {
+        transform: scale(2.5);
+        opacity: 0
+    }
 }
 
 /* ═══ SPLASH ═══ */
@@ -440,7 +449,8 @@ textarea {
     inset: 0;
     z-index: 1;
     pointer-events: none;
-    opacity: .4
+    opacity: .25;
+    will-change: transform
 }
 
 [data-theme="light"] #particleCanvas {
@@ -455,8 +465,10 @@ textarea {
     max-width: 430px;
     margin: 0 auto;
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    overflow: hidden
 }
 
 /* ═══ TOPBAR ═══ */
@@ -464,7 +476,7 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 16px 6px;
+    padding: calc(env(safe-area-inset-top, 6px) + 6px) 16px 6px;
     flex-shrink: 0
 }
 
@@ -591,6 +603,11 @@ textarea {
 
 .drawer-item:hover svg {
     color: var(--green-l)
+}
+
+.drawer-item:active {
+    transform: scale(.97);
+    transition: transform .08s
 }
 
 .drawer-divider {
@@ -771,8 +788,6 @@ textarea {
 /* ═══ CARDS ═══ */
 .card {
     background: var(--glass);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-b);
     border-radius: var(--r-l);
     padding: 16px;
@@ -826,7 +841,13 @@ textarea {
     flex-shrink: 0;
     cursor: pointer;
     transition: all .2s;
-    min-width: 0
+    min-width: 0;
+    -webkit-tap-highlight-color: transparent
+}
+
+.widget:active {
+    transform: scale(.95);
+    transition: transform .08s
 }
 
 .widget:hover {
@@ -949,6 +970,11 @@ textarea {
     background: var(--green-sub)
 }
 
+.sm-btn:active {
+    transform: scale(.9);
+    transition: transform .08s
+}
+
 .chat-msgs {
     flex: 1;
     overflow-y: auto;
@@ -1021,17 +1047,24 @@ textarea {
 }
 
 .msg-bub {
-    padding: 10px 14px;
+    padding: 12px 16px;
     border-radius: var(--r-l);
-    font-size: 13px;
-    line-height: 1.55;
-    max-width: 82%
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 85%
 }
 
 .msg.ai .msg-bub {
-    background: var(--glass);
-    border: 1px solid var(--glass-b);
-    border-bottom-left-radius: 4px
+    background: rgba(28, 28, 28, .95);
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .2)
+}
+
+[data-theme="light"] .msg.ai .msg-bub {
+    background: rgba(255, 255, 255, .95);
+    border-color: rgba(0, 0, 0, .08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .06)
 }
 
 .msg.ai .msg-bub p {
@@ -1043,9 +1076,10 @@ textarea {
 }
 
 .msg.user .msg-bub {
-    background: linear-gradient(135deg, rgba(0, 100, 0, .3), rgba(0, 100, 0, .15));
-    border: 1px solid rgba(0, 100, 0, .2);
-    border-bottom-right-radius: 4px
+    background: linear-gradient(135deg, rgba(0, 110, 0, .35), rgba(0, 90, 0, .2));
+    border: 1px solid rgba(0, 130, 0, .25);
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 80, 0, .15)
 }
 
 .msg-time {
@@ -1389,14 +1423,14 @@ textarea {
     border-radius: var(--r-l);
     border: 1px solid var(--glass-b);
     background: var(--glass);
-    backdrop-filter: blur(20px);
     color: var(--t1);
     font-size: 13px;
     font-weight: 500;
     font-family: var(--f);
     cursor: pointer;
     transition: all .25s;
-    text-align: center
+    text-align: center;
+    -webkit-tap-highlight-color: transparent
 }
 
 .feat-card:hover {
@@ -1406,8 +1440,8 @@ textarea {
 }
 
 .feat-card:active {
-    transform: scale(.96);
-    transition: transform .1s;
+    transform: scale(.94);
+    transition: transform .08s
 }
 
 .feat-card.hide {
@@ -2555,22 +2589,19 @@ textarea {
     transform: translateX(-50%);
     width: 100%;
     max-width: 430px;
-    height: var(--nav-h);
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background: rgba(11, 11, 11, .94);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border-top: 1px solid rgba(255, 255, 255, .04);
+    background: rgba(10, 10, 10, .97);
+    border-top: 1px solid rgba(255, 255, 255, .05);
     z-index: 100;
-    padding: 0 20px calc(20px + env(safe-area-inset-bottom, 0));
-    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0));
-    box-sizing: content-box;
+    padding: 6px 20px;
+    padding-bottom: calc(6px + env(safe-area-inset-bottom, 0));
+    will-change: transform
 }
 
 [data-theme="light"] .navbar {
-    background: rgba(244, 241, 235, .94);
+    background: rgba(244, 241, 235, .97);
     border-top-color: rgba(0, 0, 0, .06)
 }
 
@@ -2584,19 +2615,20 @@ textarea {
     background: transparent;
     color: var(--t3);
     cursor: pointer;
-    transition: color .2s;
-    font-family: var(--f)
+    transition: color .2s, transform .15s;
+    font-family: var(--f);
+    -webkit-tap-highlight-color: transparent
+}
+
+.nav-btn:active {
+    transform: scale(.88);
+    transition: transform .08s
 }
 
 .nav-btn svg {
     width: 22px;
     height: 22px;
     transition: all .2s
-}
-
-.nav-btn span {
-    font-size: 9px;
-    font-weight: 500
 }
 
 .nav-btn.active {
@@ -2630,8 +2662,8 @@ textarea {
 }
 
 .nav-center:active {
-    transform: translateY(-12px) scale(.9);
-    transition: transform .1s;
+    transform: translateY(-12px) scale(.88);
+    transition: transform .08s
 }
 
 .nav-center.active {

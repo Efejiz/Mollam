@@ -131,9 +131,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const cvs = document.getElementById('particleCanvas'), cx = cvs.getContext('2d'); let pts = [], aId;
     function rz() { cvs.width = innerWidth; cvs.height = innerHeight; } rz(); addEventListener('resize', rz);
     class Pt { constructor() { this.r(); } r() { this.x = Math.random() * cvs.width; this.y = Math.random() * cvs.height; this.tx = cvs.width / 2 + (Math.random() - .5) * 80; this.ty = cvs.height * .35 + (Math.random() - .5) * 40; this.sp = .002 + Math.random() * .003; this.sz = Math.random() * 1.5 + .3; this.life = 0; this.ml = 200 + Math.random() * 200; this.op = 0; const v = Math.random() * 35; this.cr = 184 + v; this.cg = 134 + v * .5; } u() { this.life++; this.x += (this.tx - this.x) * this.sp; this.y += (this.ty - this.y) * this.sp; this.op = this.life < 20 ? this.life / 20 : this.life > this.ml - 20 ? (this.ml - this.life) / 20 : .4 + Math.sin(this.life * .03) * .15; this.x += Math.sin(this.life * .018) * .2; if (this.life >= this.ml) this.r(); } d() { cx.beginPath(); cx.arc(this.x, this.y, this.sz, 0, Math.PI * 2); cx.fillStyle = `rgba(${this.cr},${this.cg},11,${this.op * .2})`; cx.fill(); } }
-    for (let i = 0; i < 20; i++) { const p = new Pt(); p.life = Math.random() * p.ml; pts.push(p); }
+    const ptCount = window.innerWidth <= 430 ? 10 : 20;
+    for (let i = 0; i < ptCount; i++) { const p = new Pt(); p.life = Math.random() * p.ml; pts.push(p); }
     function anim() { cx.clearRect(0, 0, cvs.width, cvs.height); pts.forEach(p => { p.u(); p.d(); }); aId = requestAnimationFrame(anim); } anim();
     document.addEventListener('visibilitychange', () => { document.hidden ? cancelAnimationFrame(aId) : anim(); });
+
+    // ═══ RIPPLE EFFECT ═══
+    function createRipple(e) {
+        const btn = e.currentTarget;
+        const circle = document.createElement('span');
+        const d = Math.max(btn.clientWidth, btn.clientHeight);
+        const rect = btn.getBoundingClientRect();
+        circle.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - rect.left - d / 2}px;top:${e.clientY - rect.top - d / 2}px;position:absolute;border-radius:50%;background:rgba(255,255,255,.15);transform:scale(0);animation:rippleAnim .4s ease-out;pointer-events:none`;
+        btn.style.position = btn.style.position || 'relative';
+        btn.style.overflow = 'hidden';
+        btn.appendChild(circle);
+        circle.addEventListener('animationend', () => circle.remove());
+    }
+    document.querySelectorAll('.nav-btn,.nav-center,.feat-card,.widget,.sug-card,.send-btn,.ob-next,.auth-btn,.action-btn,.drawer-item,.topbar-btn,.back-btn,.sm-btn').forEach(el => {
+        el.addEventListener('click', createRipple);
+    });
 
     // ═══ NAVIGATION ═══
     const allPages = document.querySelectorAll('.page'), navBtns = document.querySelectorAll('.nav-btn, .nav-center');
