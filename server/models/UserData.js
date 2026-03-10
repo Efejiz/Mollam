@@ -18,31 +18,27 @@ const userDataSchema = new mongoose.Schema({
     },
     // Favorilere Eklenen İçerikler (Ayet, Dua vb.)
     favorites: [{
-        type: { type: String, enum: ['dua', 'ayet', 'hadis'] },
-        contentId: String,       // JSON ids, or actual text
-        title: String,
         text: String,
-        addedAt: { type: Date, default: Date.now }
+        time: String
+    }],
+    // Sohbet Geçmişi (Chat History)
+    chatHistory: [{
+        q: String,
+        time: String
     }],
     // Tesbih İstatistikleri
-    tesbihStats: {
-        totalZikir: { type: Number, default: 0 },
-        history: [{
-            zikirName: String,
-            count: Number,
-            date: { type: Date, default: Date.now }
-        }]
-    },
+    tasbihCount: { type: Number, default: 0 },
     // Namaz Takibi
-    prayerTracker: [{
-        date: { type: String }, // DD-MM-YYYY format
-        prayers: {
-            fajr: { type: Boolean, default: false },
-            dhuhr: { type: Boolean, default: false },
-            asr: { type: Boolean, default: false },
-            maghrib: { type: Boolean, default: false },
-            isha: { type: Boolean, default: false }
-        }
+    namazTracker: {
+        Fajr: { type: Boolean, default: false },
+        Dhuhr: { type: Boolean, default: false },
+        Asr: { type: Boolean, default: false },
+        Maghrib: { type: Boolean, default: false },
+        Isha: { type: Boolean, default: false }
+    },
+    goals: [{
+        t: String,
+        d: { type: Boolean, default: false }
     }],
     // Günlük Seri (Streak)
     streak: {
@@ -51,5 +47,7 @@ const userDataSchema = new mongoose.Schema({
         lastActiveDate: { type: String }
     }
 }, { timestamps: true });
+
+userDataSchema.index({ user: 1 });
 
 module.exports = mongoose.model('UserData', userDataSchema);

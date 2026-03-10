@@ -5,8 +5,10 @@ const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
 const rateLimit = require('express-rate-limit');
+const helmet = require('helmet');
+const morgan = require('morgan');
 const connectDB = require('./config/db');
-const { generateResponse } = require('./gemini');
+const { generateResponse, generateResponseStream } = require('./gemini');
 
 // ── App Version ─────────────────────────────────────────
 const APP_VERSION = '2.5.0';
@@ -22,7 +24,17 @@ function log(level, msg, meta = {}) {
 }
 
 const app = express();
+app.set('trust proxy', 1);
 const PORT = process.env.PORT || 3000;
+
+// ── Security & Logging ──────────────────────────────────
+app.use(helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false
+}));
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
+
+// Routes are imported below at line ~88
 
 // ── CORS — restrict to configured origin ────────────────
 app.use(cors());
@@ -143,7 +155,34 @@ app.post('/api/chat', chatLimiter, async (req, res) => {
     }
 });
 
+// ── Chat Stream API (SSE) ───────────────────────────────
+app.post('/api/chat/stream', chatLimiter, async (req, res) => {
+    try {
+        const validation = validateChatInput(req.body);
+        if (!validation.valid) {
+            return res.status(validation.status).json({ error: validation.error });
+        }
 
+        const { message, madhab = 'Hanefi', category = '', history = [] } = req.body;
+
+        // Set headers for Server-Sent Events
+        res.setHeader('Content-Type', 'text/event-stream');
+        res.setHeader('Cache-Control', 'no-cache');
+        res.setHeader('Connection', 'keep-alive');
+
+        // Wait for the stream to complete
+        await generateResponseStream(message, madhab, category, history, res);
+
+    } catch (error) {
+        log('error', 'Chat stream error', { error: error.message });
+        if (!res.headersSent) {
+            res.status(500).json({ error: 'Sunucu hatası.' });
+        } else {
+            res.write(`data: ${JSON.stringify({ type: 'error', text: 'Üzgünüm, bir hata oluştu.' })}\n\n`);
+            res.end();
+        }
+    }
+});
 
 // ── Prayer Times API (via Aladhan) ──────────────────────
 app.get('/api/prayer-times', async (req, res) => {

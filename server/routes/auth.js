@@ -9,7 +9,10 @@ const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 // Token oluşturucu
 const generateToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET || 'mollam_default_secret_fallback', {
+    if (!process.env.JWT_SECRET) {
+        throw new Error('FATAL: JWT_SECRET environment variable is missing!');
+    }
+    return jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: '30d',
     });
 };

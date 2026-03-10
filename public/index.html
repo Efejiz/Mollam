@@ -6,8 +6,8 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="description" content="Mollam - Güvenilir Dijital Fıkıh Rehberiniz">
-    <meta name="theme-color" content="#0a0a0a">
-    <meta name="msapplication-navbutton-color" content="#0a0a0a">
+    <meta name="theme-color" content="#050F0A">
+    <meta name="msapplication-navbutton-color" content="#050F0A">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="mobile-web-app-capable" content="yes">
@@ -18,8 +18,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Amiri:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Product+Sans:wght@300;400;500;700&family=Amiri:wght@400;700&display=swap"
         rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Google Sans';
+            src: local('Product Sans'), local('Google Sans');
+            font-weight: 100 900;
+        }
+    </style>
     <link rel="stylesheet" href="styles.css?v=2">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
@@ -27,11 +34,15 @@
 <body>
     <!-- ═══ SPLASH ═══ -->
     <div class="splash" id="splash">
+        <div class="splash-ornament-top"></div>
         <div class="splash-inner">
+            <div class="splash-crescent">☪</div>
+            <div class="splash-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
             <div class="splash-logo">Mollam</div>
-            <div class="splash-sub">Dijital Fıkıh Rehberi</div>
+            <div class="splash-sub">Güvenilir Dijital Fıkıh Rehberi</div>
             <div class="splash-dots"><span></span><span></span><span></span></div>
         </div>
+        <div class="splash-ornament-bottom"></div>
     </div>
 
     <!-- ═══ ONBOARDING ═══ -->
@@ -368,6 +379,13 @@
                             <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
                         </svg></div><span>Hadis & Ayet</span><small class="feat-mini">Günlük</small>
                 </button>
+                <button class="feat-card" data-feat="zakat">
+                    <div class="feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v12M8 10h8M8 14h8" />
+                        </svg></div><span>Zekat Hesapla</span><small class="feat-mini">Mezheplere göre</small>
+                </button>
             </div>
         </div>
 
@@ -385,8 +403,18 @@
                         <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10" />
                     </svg></div>
                 <div class="card">
-                    <div class="prayer-loc" id="prayerLoc">
-                        <div class="skel skel-sm"></div>
+                    <div class="prayer-loc-row">
+                        <div class="prayer-loc" id="prayerLoc">
+                            <div class="skel skel-sm"></div>
+                        </div>
+                        <button class="loc-refresh-btn" id="locRefreshBtn" aria-label="Konumu Güncelle">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                                <circle cx="12" cy="10" r="3" />
+                            </svg>
+                            <span>Konum</span>
+                        </button>
                     </div>
                     <div class="prayer-list" id="prayerList">
                         <div class="p-row" data-name="Fajr">
@@ -549,7 +577,8 @@
                 <h2>Kıble Pusulası</h2>
             </div>
             <div class="page-scroll"
-                style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:40px">
+                style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding-top:20px">
+                <div class="qibla-degree" id="qiblaDegree">--°</div>
                 <div class="compass" id="compass">
                     <div class="compass-ring"><span class="c-dir n">K</span><span class="c-dir e">D</span><span
                             class="c-dir s">G</span><span class="c-dir w">B</span></div>
@@ -560,7 +589,22 @@
                             <path d="M12 12v10" fill="none" stroke="var(--bg)" stroke-width="0.5" />
                         </svg></div>
                 </div>
-                <p class="compass-info" id="compassInfo">Yön bulmak için cihazınızı düz tutun</p>
+                <p class="compass-info" id="compassInfo">Pusulayı başlatmak için butona dokunun</p>
+                <button class="action-btn" id="startQiblaBtn" style="margin-top:16px;max-width:260px">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                        <circle cx="12" cy="12" r="10" />
+                        <polygon points="12 2 15 10 12 8 9 10" fill="currentColor" stroke="none" />
+                    </svg>
+                    Pusulayı Başlat
+                </button>
+                <div class="calibration-hint hidden" id="calibrationHint">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16"
+                        height="16">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4M12 8h.01" />
+                    </svg>
+                    <span>Doğruluk düşük. Telefonunuzu 8 şeklinde çevirerek kalibre edin.</span>
+                </div>
             </div>
         </div>
 
@@ -635,6 +679,119 @@
             </div>
         </div>
 
+        <!-- ═══ SUB: ZAKAT ═══ -->
+        <div class="page sub" id="pageZakat">
+            <div class="sub-header"><button class="back-btn" data-back="pageFeatures"><svg viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6" />
+                    </svg></button>
+                <h2>Zekat Hesaplama</h2>
+            </div>
+            <div class="page-scroll">
+                <div class="card">
+                    <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="card-icon">
+                            <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
+                        </svg>Mezhep</h3>
+                    <div class="zakat-madhab" id="zakatMadhab">
+                        <button class="z-madhab active" data-madhab="Hanefi">Hanefi</button>
+                        <button class="z-madhab" data-madhab="Şafii">Şafii</button>
+                        <button class="z-madhab" data-madhab="Maliki">Maliki</button>
+                        <button class="z-madhab" data-madhab="Hanbeli">Hanbeli</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="card-icon">
+                            <rect x="2" y="6" width="20" height="12" rx="2" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>Varlıklarınız</h3>
+                    <div class="z-inputs">
+                        <div class="z-input-group">
+                            <label>Nakit & Banka (₺)</label>
+                            <input type="number" id="zCash" placeholder="0" min="0">
+                        </div>
+                        <div class="z-input-group">
+                            <label>Altın (gram)</label>
+                            <input type="number" id="zGold" placeholder="0" min="0" step="0.1">
+                        </div>
+                        <div class="z-input-group">
+                            <label>Gümüş (gram)</label>
+                            <input type="number" id="zSilver" placeholder="0" min="0" step="0.1">
+                        </div>
+                        <div class="z-input-group">
+                            <label>Hisse & Yatırım (₺)</label>
+                            <input type="number" id="zStocks" placeholder="0" min="0">
+                        </div>
+                        <div class="z-input-group">
+                            <label>Ticari Mallar (₺)</label>
+                            <input type="number" id="zBusiness" placeholder="0" min="0">
+                        </div>
+                        <div class="z-input-group">
+                            <label>Kira Geliri (₺)</label>
+                            <input type="number" id="zRent" placeholder="0" min="0">
+                        </div>
+                        <div class="z-input-group">
+                            <label>Borçlar — düşülecek (₺)</label>
+                            <input type="number" id="zDebt" placeholder="0" min="0">
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="card-icon">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 6v12M8 10h8M8 14h8" />
+                        </svg>Güncel Fiyatlar</h3>
+                    <div class="z-inputs z-prices">
+                        <div class="z-input-group">
+                            <label>Altın ₺/gram</label>
+                            <input type="number" id="zGoldPrice" value="3200" min="0">
+                        </div>
+                        <div class="z-input-group">
+                            <label>Gümüş ₺/gram</label>
+                            <input type="number" id="zSilverPrice" value="38" min="0">
+                        </div>
+                    </div>
+                </div>
+                <button class="action-btn z-calc-btn" id="calcZakatBtn">Zekat Hesapla</button>
+                <div class="card hidden" id="zakatResult">
+                    <div class="z-result">
+                        <div class="z-nisab-info" id="zNisabInfo"></div>
+                        <div class="z-total-row">
+                            <span>Toplam Varlık</span>
+                            <strong id="zTotalAsset">₺0</strong>
+                        </div>
+                        <div class="z-total-row">
+                            <span>Nisab Miktarı</span>
+                            <strong id="zNisabVal">₺0</strong>
+                        </div>
+                        <div class="z-total-row z-highlight">
+                            <span>Ödenecek Zekat (%2.5)</span>
+                            <strong id="zZakatVal">₺0</strong>
+                        </div>
+                        <p class="z-note" id="zNote"></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="card-icon">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4M12 8h.01" />
+                        </svg>Zekat Bilgisi</h3>
+                    <div class="z-info-text">
+                        <p>Zekat, İslam'ın beş şartından biridir. Nisab miktarına ulaşmış ve üzerinden bir kameri yıl
+                            geçmiş mal varlığının <strong>%2.5</strong>'i zekat olarak verilir.</p>
+                        <p><strong>Nisab:</strong> Zekatın farz olması için gereken asgari mal miktarıdır.</p>
+                        <p><strong>Hanefi:</strong> Altın nisabı 87.48g (20 miskal), Gümüş nisabı 612.36g (200
+                            dirhem). İkisinden düşük olan esas alınır.</p>
+                        <p><strong>Şafii / Maliki / Hanbeli:</strong> Altın nisabı 85g, Gümüş nisabı 595g.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- ═══ PAGE: PROFILE ═══ -->
         <div class="page" id="pageProfile">
             <div class="page-scroll">
@@ -649,14 +806,29 @@
                 </div>
 
                 <div class="card auth-card" id="profileAuthCard">
-                    <p style="font-size: 13px; color: var(--t2); margin-bottom: 12px;">Verilerinizi yedeklemek ve
-                        cihazlar arası senkronize etmek için giriş yapın.</p>
-                    <button class="action-btn" id="openLoginBtn"
-                        style="background: var(--green-l); color: #fff; width: 100%;">Giriş Yap / Kayıt Ol</button>
+                    <p style="font-size: 13px; color: var(--t2); margin-bottom: 16px;">Verilerinizi yedeklemek ve
+                        cihazlar arası senkronize etmek için hesabınıza giriş yapın.</p>
+                    <button class="action-btn" id="openLoginBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"
+                            height="20">
+                            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                            <polyline points="10 17 15 12 10 7"></polyline>
+                            <line x1="15" y1="12" x2="3" y2="12"></line>
+                        </svg>
+                        Giriş Yap / Kayıt Ol
+                    </button>
                 </div>
 
                 <div class="card auth-card hidden" id="profileLogoutCard">
-                    <button class="action-btn danger" id="logoutBtn" style="width: 100%;">Çıkış Yap</button>
+                    <button class="action-btn danger" id="logoutBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"
+                            height="20">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                            <polyline points="16 17 21 12 16 7"></polyline>
+                            <line x1="21" y1="12" x2="9" y2="12"></line>
+                        </svg>
+                        Çıkış Yap
+                    </button>
                 </div>
                 <div class="card">
                     <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -678,8 +850,52 @@
                         </svg>Ses</h3>
                     <div class="toggle-row"><span>Tesbih Sesi</span><label class="toggle"><input type="checkbox"
                                 id="soundToggle"><span class="toggle-sl"></span></label></div>
-                    <div class="toggle-row"><span>Bildirimler</span><label class="toggle"><input type="checkbox"
+                </div>
+                <div class="card">
+                    <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            class="card-icon">
+                            <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 01-3.46 0" />
+                        </svg>Bildirimler</h3>
+                    <div class="toggle-row"><span>Bildirimleri Aç</span><label class="toggle"><input type="checkbox"
                                 id="notifToggle"><span class="toggle-sl"></span></label></div>
+                    <div class="notif-settings" id="notifSettings">
+                        <div class="notif-option">
+                            <span>Namaz Vakti</span>
+                            <select id="notifPrayer" class="notif-select">
+                                <option value="off">Kapalı</option>
+                                <option value="0">Vakit girince</option>
+                                <option value="15">15 dk önce</option>
+                                <option value="30">30 dk önce</option>
+                            </select>
+                        </div>
+                        <div class="notif-option">
+                            <span>Zikir Hatırlatma</span>
+                            <select id="notifDhikr" class="notif-select">
+                                <option value="off">Kapalı</option>
+                                <option value="24">Günde 1 kez</option>
+                                <option value="2">Her 2 saat</option>
+                                <option value="4">Her 4 saat</option>
+                                <option value="6">Her 6 saat</option>
+                            </select>
+                        </div>
+                        <div class="notif-option">
+                            <span>Günlük Ayet</span>
+                            <select id="notifAyet" class="notif-select">
+                                <option value="off">Kapalı</option>
+                                <option value="morning">Sabah (08:00)</option>
+                                <option value="evening">Akşam (20:00)</option>
+                            </select>
+                        </div>
+                        <div class="notif-option">
+                            <span>Cuma Hatırlatma</span>
+                            <select id="notifJuma" class="notif-select">
+                                <option value="off">Kapalı</option>
+                                <option value="60">1 saat önce</option>
+                                <option value="120">2 saat önce</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="card">
                     <h3 class="card-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -753,7 +969,7 @@
                 </svg><span>Profil</span></button>
         </nav>
     </div>
-    <script src="app.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 
 </html>

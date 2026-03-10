@@ -3,79 +3,63 @@ const router = express.Router();
 const { protect } = require('../middleware/authMiddleware');
 const UserData = require('../models/UserData');
 
-// @route   GET /api/user-data
-// @desc    Kullanıcının verilerini (ayarlar, favoriler vb.) getir
+// @route   GET /api/user-data/
+// @desc    Get current user's synced data
 // @access  Private
 router.get('/', protect, async (req, res) => {
     try {
         let userData = await UserData.findOne({ user: req.user._id });
-
         if (!userData) {
-            // Eğer yoksa (normalde kayıtta oluşur ama) oluştur
             userData = await UserData.create({ user: req.user._id });
         }
-
-        res.json(userData);
+        res.json({
+            tasbihCount: userData.tasbihCount,
+            goals: userData.goals,
+            namazTracker: userData.namazTracker,
+            favorites: userData.favorites,
+            chatHistory: userData.chatHistory,
+            streak: userData.streak,
+            preferences: {
+                theme: userData.settings.theme,
+                madhab: userData.settings.defaultMadhab
+            }
+        });
     } catch (error) {
         console.error('UserData GET error:', error);
-        res.status(500).json({ error: 'Sunucu hatası' });
+        res.status(500).json({ error: 'Server error retrieving data' });
     }
 });
 
-// @route   PUT /api/user-data/settings
-// @desc    Kullanıcı ayarlarını güncelle
+// @route   POST /api/user-data/
+// @desc    Update user's synced data (upsert)
 // @access  Private
-router.put('/settings', protect, async (req, res) => {
+router.post('/', protect, async (req, res) => {
     try {
-        const userData = await UserData.findOne({ user: req.user._id });
-        if (!userData) return res.status(404).json({ error: 'Kullanıcı verisi bulunamadı' });
+        const { tasbihCount, goals, namazTracker, favorites, chatHistory, preferences, streak } = req.body;
 
-        // Gelen verilerle ayarları birleştir
-        userData.settings = { ...userData.settings, ...req.body };
-        const updatedData = await userData.save();
+        let userData = await UserData.findOne({ user: req.user._id });
+        if (!userData) {
+            userData = new UserData({ user: req.user._id });
+        }
 
-        res.json(updatedData.settings);
-    } catch (error) {
-        res.status(500).json({ error: 'Sunucu hatası' });
-    }
-});
+        if (tasbihCount !== undefined) userData.tasbihCount = tasbihCount;
+        if (goals) userData.goals = goals;
+        if (namazTracker) userData.namazTracker = namazTracker;
+        if (favorites) userData.favorites = favorites;
+        if (chatHistory) userData.chatHistory = chatHistory;
+        if (streak) userData.streak = streak;
 
-// @route   POST /api/user-data/favorites
-// @desc    Favoriye yeni bir dua/ayet/hadis ekle
-// @access  Private
-router.post('/favorites', protect, async (req, res) => {
-    try {
-        const { type, contentId, title, text } = req.body;
-        const userData = await UserData.findOne({ user: req.user._id });
+        if (preferences) {
+            if (preferences.theme) userData.settings.theme = preferences.theme;
+            if (preferences.madhab) userData.settings.defaultMadhab = preferences.madhab;
+        }
 
-        // Belki zaten favoridedir kontrolü yapılabilir
-        const exists = userData.favorites.find(f => f.contentId === contentId && f.type === type);
-        if (exists) return res.status(400).json({ error: 'Zaten favorilerde ekli.' });
-
-        userData.favorites.push({ type, contentId, title, text });
         await userData.save();
-
-        res.json(userData.favorites);
+        res.json({ success: true, message: 'Data synced successfully' });
     } catch (error) {
-        res.status(500).json({ error: 'Sunucu hatası' });
+        console.error('UserData POST error:', error);
+        res.status(500).json({ error: 'Server error saving data' });
     }
 });
-
-// @route   DELETE /api/user-data/favorites/:id
-// @desc    Favoriyi sil
-// @access  Private
-router.delete('/favorites/:id', protect, async (req, res) => {
-    try {
-        const userData = await UserData.findOne({ user: req.user._id });
-        userData.favorites = userData.favorites.filter(f => f._id.toString() !== req.params.id);
-        await userData.save();
-
-        res.json(userData.favorites);
-    } catch (error) {
-        res.status(500).json({ error: 'Sunucu hatası' });
-    }
-});
-
-// Daha sonra chat geçmişleri vs. eklenebilir.
 
 module.exports = router;

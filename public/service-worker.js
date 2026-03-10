@@ -1,9 +1,15 @@
-const CACHE_NAME = 'mollam-v10';
+const CACHE_NAME = 'mollam-v13';
 const STATIC_ASSETS = [
     '/',
     '/index.html',
     '/styles.css',
-    '/app.js',
+    '/js/main.js',
+    '/js/api.js',
+    '/js/auth.js',
+    '/js/chat.js',
+    '/js/prayer.js',
+    '/js/ui.js',
+    '/js/features.js',
     '/manifest.json',
     '/assets/icon-192.png',
     '/assets/icon-512.png'

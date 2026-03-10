@@ -45,12 +45,27 @@ function classifyError(error) {
     return { type: 'UNKNOWN', userMsg: 'Üzgünüm, şu anda bir hata oluştu. Lütfen tekrar deneyin.' };
 }
 
+// ── AI CACHE SYSTEM ──────────────────────────────────────────
+const aiCache = new Map();
+const CACHE_LIMIT = 500;
+
+function getCacheKey(msg, madhab, cat) {
+    return `${msg.trim().toLowerCase()}_${madhab || 'Hanefi'}_${cat || ''}`;
+}
+
 /**
  * Generate a response using Gemini API (with retry + model fallback)
  */
 const MODELS = ['gemini-2.5-flash', 'gemma-3-12b-it'];
 
 async function generateResponse(userMessage, madhab = 'Hanefi', category = '', history = []) {
+    const cacheKey = getCacheKey(userMessage, madhab, category);
+    if ((!history || history.length === 0) && aiCache.has(cacheKey)) {
+        console.log(`⚡ Serving from AI Cache: ${cacheKey}`);
+        const cached = aiCache.get(cacheKey);
+        return { success: true, text: cached.text, sources: cached.sources };
+    }
+
     const MAX_RETRIES = 2;
 
     for (const modelName of MODELS) {
@@ -101,11 +116,17 @@ async function generateResponse(userMessage, madhab = 'Hanefi', category = '', h
 
                 // Clean the response text (remove source JSON from displayed text)
                 const cleanText = text.replace(/\{"sources":\s*\[[^\]]*\]\}/g, '').trim();
+                const finalSources = sources.length > 0 ? sources : ['Genel İslami Bilgi'];
+
+                if (!history || history.length === 0) {
+                    if (aiCache.size >= CACHE_LIMIT) aiCache.delete(aiCache.keys().next().value);
+                    aiCache.set(cacheKey, { text: cleanText, sources: finalSources });
+                }
 
                 return {
                     success: true,
                     text: cleanText,
-                    sources: sources.length > 0 ? sources : ['Genel İslami Bilgi']
+                    sources: finalSources
                 };
             } catch (error) {
                 const classified = classifyError(error);
@@ -146,4 +167,110 @@ async function generateResponse(userMessage, madhab = 'Hanefi', category = '', h
     };
 }
 
-module.exports = { generateResponse };
+/**
+ * Generate a streaming response using Gemini API (with retry + model fallback)
+ */
+async function generateResponseStream(userMessage, madhab = 'Hanefi', category = '', history = [], res) {
+    const cacheKey = getCacheKey(userMessage, madhab, category);
+    if ((!history || history.length === 0) && aiCache.has(cacheKey)) {
+        console.log(`⚡ Serving from AI Cache (Stream): ${cacheKey}`);
+        const cached = aiCache.get(cacheKey);
+
+        // Simulate streaming (fast stream)
+        const words = cached.text.split(' ');
+        for (const w of words) {
+            res.write(`data: ${JSON.stringify({ type: 'chunk', text: w + ' ' })}\n\n`);
+            await new Promise(r => setTimeout(r, 20)); // ultra-fast streaming
+        }
+        res.write(`data: ${JSON.stringify({ type: 'done', sources: cached.sources })}\n\n`);
+        res.end();
+        return { success: true };
+    }
+
+    const MAX_RETRIES = 2;
+
+    for (const modelName of MODELS) {
+        for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+            try {
+                console.log(`🤖 Trying model: ${modelName} STREAM (attempt ${attempt}/${MAX_RETRIES})`);
+                const model = genAI.getGenerativeModel({ model: modelName });
+
+                let prompt = SYSTEM_PROMPT + '\n\n';
+
+                if (madhab) prompt += `Kullanıcının seçtiği mezhep: ${madhab}\n`;
+                if (category) prompt += `Soru kategorisi: ${category}\n`;
+
+                if (history.length > 0) {
+                    prompt += `\n--- ÖNCEKİ KONUŞMA ---\n`;
+                    history.slice(-6).forEach(h => {
+                        prompt += `Kullanıcı: ${h.role === 'user' ? h.text : ''}\n`;
+                        prompt += `Mollam: ${h.role === 'ai' ? h.text : ''}\n`;
+                    });
+                    prompt += `--- ÖNCEKİ KONUŞMA SONU ---\n\n`;
+                    prompt += `Mevcut Konuşmada devam ediyorsunuz. Tekrar Selam VERME.\n\n`;
+                } else {
+                    prompt += `Bu yeni bir sohbet. Lütfen cevabına "Esselamu Aleyküm." diyerek başla.\n\n`;
+                }
+
+                prompt += `Kullanıcı sorusu: ${userMessage}`;
+
+                const result = await model.generateContentStream(prompt);
+                let fullText = "";
+
+                for await (const chunk of result.stream) {
+                    const chunkText = chunk.text();
+                    fullText += chunkText;
+
+                    res.write(`data: ${JSON.stringify({ type: 'chunk', text: chunkText })}\n\n`);
+                }
+
+                let sources = [];
+                const sourceMatch = fullText.match(/\{"sources":\s*\[([^\]]+)\]\}/);
+                if (sourceMatch) {
+                    try {
+                        const parsed = JSON.parse(sourceMatch[0]);
+                        sources = parsed.sources;
+                    } catch (e) { }
+                }
+
+                const cleanText = fullText.replace(/\{"sources":\s*\[[^\]]*\]\}/g, '').trim();
+                const finalSources = sources.length > 0 ? sources : ['Genel İslami Bilgi'];
+
+                if (!history || history.length === 0) {
+                    if (aiCache.size >= CACHE_LIMIT) aiCache.delete(aiCache.keys().next().value);
+                    aiCache.set(cacheKey, { text: cleanText, sources: finalSources });
+                }
+
+                res.write(`data: ${JSON.stringify({ type: 'done', sources: finalSources })}\n\n`);
+                res.end();
+                return { success: true };
+
+            } catch (error) {
+                const classified = classifyError(error);
+                console.error(`Gemini API stream error [${classified.type}] (attempt ${attempt}/${MAX_RETRIES}):`, error.message);
+
+                if ((classified.type === 'RATE_LIMIT' || classified.type === 'NETWORK') && attempt < MAX_RETRIES) {
+                    const waitMs = Math.pow(2, attempt) * 1000;
+                    console.log(`⏳ Waiting ${waitMs}ms before retry...`);
+                    await new Promise(r => setTimeout(r, waitMs));
+                    continue;
+                }
+
+                if (classified.type === 'RATE_LIMIT' || classified.type === 'NETWORK') {
+                    console.log(`🔄 Model ${modelName} quota exhausted, trying next model...`);
+                    break;
+                }
+
+                res.write(`data: ${JSON.stringify({ type: 'error', text: classified.userMsg })}\n\n`);
+                res.end();
+                return { success: false };
+            }
+        }
+    }
+
+    res.write(`data: ${JSON.stringify({ type: 'error', text: 'Tüm AI modelleri şu anda meşgul. Lütfen birkaç dakika sonra tekrar deneyin.' })}\n\n`);
+    res.end();
+    return { success: false };
+}
+
+module.exports = { generateResponse, generateResponseStream };
